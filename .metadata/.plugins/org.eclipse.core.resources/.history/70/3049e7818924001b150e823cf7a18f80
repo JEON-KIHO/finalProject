@@ -1,0 +1,34 @@
+package com.example.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.domain.Criteria;
+import com.example.domain.ReplyVO;
+import com.example.mapper.ReplyMapper;
+
+@RestController // data를 생성해주는 컨트롤러
+@RequestMapping("reply")
+public class ReplyController {
+	@Autowired
+	ReplyMapper mapper;
+	
+	@RequestMapping("/list")
+	public List<ReplyVO> list(Criteria cri, int bno) {
+		
+		return mapper.list(cri, bno);
+	}
+	
+	@RequestMapping("/insert")
+	public void insert(ReplyVO vo) {
+		mapper.insert(vo);
+	}
+	
+	@RequestMapping("/delete")
+	public void delete(int rno) {
+		mapper.delete(rno);
+	}
+}

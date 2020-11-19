@@ -1,0 +1,23 @@
+package com.example.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.domain.BoardVO;
+import com.example.domain.Criteria;
+import com.example.mapper.BoardMapper;
+
+@Controller
+@RequestMapping("board")
+public class BoardController {
+	@Autowired
+	BoardMapper mapper;
+
+	@RequestMapping("list")
+	public List<BoardVO> list(Criteria cri) {
+		return mapper.list(cri);
+	}
+}

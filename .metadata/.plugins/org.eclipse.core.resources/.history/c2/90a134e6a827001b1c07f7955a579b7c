@@ -1,0 +1,12 @@
+package com.example.domain;
+
+import java.util.Date;
+
+public class TradeVO {
+	private int tno;
+	private String ano;
+	private String type;
+	private String tradeNo;
+	private Date tradeDate;
+	private double amount;
+}
