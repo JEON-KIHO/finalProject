@@ -1,6 +1,7 @@
 package com.example.controller;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -33,9 +34,9 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping("day.json")
+	@RequestMapping("insertDay.json")
 	@ResponseBody
-	public void day() {
+	public void insertDay() {
 		GregorianCalendar cal = new GregorianCalendar();
 		int thisYear = cal.get(GregorianCalendar.YEAR);
 		int thisMonth = cal.get(GregorianCalendar.MONTH)+1;
@@ -56,16 +57,31 @@ public class LoginController {
 						}
 						cal.set(GregorianCalendar.DAY_OF_MONTH, 1);
 						int maxDay = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
-						for(int d = 1; d <= maxDay; d++) {
-							cal.set(GregorianCalendar.DAY_OF_MONTH, d);
-							String day = d+"";
-							if(day.length() == 1) {
-								day = "0" + day;
+							
+							if(thisDay == 1) {
+								for(int d = 1; d <= maxDay; d++) {
+									cal.set(GregorianCalendar.DAY_OF_MONTH, d);
+									String day = d + "";
+									if (day.length() == 1) {
+										day = "0" + day;
+									}
+									Date date = cal.getTime();
+									System.out.println(date + "/" + cal.get(GregorianCalendar.WEEK_OF_MONTH));
+									 mapper.insert(date, cal.get(GregorianCalendar.WEEK_OF_MONTH));
+								}
+							} else {
+								for(int d = thisDay; d <= maxDay; d++) {
+									cal.set(GregorianCalendar.DAY_OF_MONTH, d);
+									String day = d + "";
+									if (day.length() == 1) {
+										day = "0" + day;
+									}
+									Date date = cal.getTime();
+									System.out.println(date + "/" + cal.get(GregorianCalendar.WEEK_OF_MONTH));
+									 mapper.insert(date, cal.get(GregorianCalendar.WEEK_OF_MONTH));
+								}
+								thisDay = 1;
 							}
-							Date strDate = cal.getTime();
-							System.out.println(strDate);
-							mapper.insert(strDate);
-						}
 					}
 				} else {
 					cal.set(GregorianCalendar.MONTH, m-1);
@@ -82,9 +98,9 @@ public class LoginController {
 						if(day.length() == 1) {
 							day = "0" + day;
 						}
-						Date strDate = cal.getTime();
-						System.out.println(strDate);
-						mapper.insert(strDate);
+						Date date = cal.getTime();
+						System.out.println(date + "/" + cal.get(GregorianCalendar.WEEK_OF_MONTH));
+						mapper.insert(date, cal.get(GregorianCalendar.WEEK_OF_MONTH));
 					}
 				}
 				
@@ -92,14 +108,19 @@ public class LoginController {
 		}
 	}
 	
-//	@RequestMapping("day.json")
-//	@ResponseBody
-//	public List<DayVO> listJson(String keyword) {
-//		List<DayVO> list = mapper.list(keyword);
-//		return list;
-//	}
-//	
-//	@RequestMapping("day")
-//	public void day() {
-//	}
+	@RequestMapping("day.json")
+	@ResponseBody
+	public List<DayVO> listJson(String date) throws ParseException {
+		System.out.println(date);
+		List<DayVO> list = mapper.list(date);
+		return list;
+	}
+	
+	@RequestMapping("day")
+	public void day() {
+	}
+	
+	@RequestMapping("calendar")
+	public void calendar() {
+	}
 }
