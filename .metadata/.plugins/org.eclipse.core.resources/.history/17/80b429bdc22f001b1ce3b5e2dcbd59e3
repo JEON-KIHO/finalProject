@@ -1,0 +1,13 @@
+package com.example.mapper_oracle;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+
+public interface CalendarMapper {
+	public void insert(Date date);
+	
+	public List<String> list(String keyword);
+	
+	public int total(String keyword);
+}

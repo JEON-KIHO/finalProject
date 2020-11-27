@@ -1,0 +1,48 @@
+<%@page import="java.util.GregorianCalendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javaScript" language="javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+<script>
+
+<%
+GregorianCalendar cal = new GregorianCalendar();
+int day;
+int month;
+int year;
+
+for(int y = 2020; y <= 2023; y++) {
+	cal.set(GregorianCalendar.YEAR, y);
+	for(int m = 0; m <= 11; m++) {
+		cal.set(GregorianCalendar.MONTH, m);
+		cal.set(GregorianCalendar.DAY_OF_MONTH, 1);
+		int maxDay = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
+		for(int d = 1; d <= maxDay; d++) {
+			cal.set(GregorianCalendar.DAY_OF_MONTH, d);
+			day = d;
+			month = m;
+			year = y;
+			String date = year+"/"+month+"/"+day;
+		}
+	}
+}
+%>
+
+
+	let date = <%=day%>;
+
+	getList();
+
+	function getList() {
+		alert(date);
+	}
+</script>
+</html>

@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MOVIE CHART</title>
+</head>
+<body>
+<h2> [MOVIE CHART] </h2>
+<div id="divCGV"></div>
+<script id="temp" type="text/x-handlebars-template">
+	{{#each .}}
+		<div>
+			<div> {{rank}} </div>
+			<div> <img src="{{image}}" width=150> </div>
+			<div> {{title}} </div>
+		<div>
+	{{/each}}
+</script>
+</body>
+<script>
+	
+	
+	getList();
+	
+	function getList() {
+		$.ajax({
+			type:"get",
+			url:"cgv.json",
+			success:function(data) {
+				var temp = Handlebars.compile($("#temp").html());
+				 $("#divCGV").html(temp(data));
+			}
+		});
+	}
+</script>
+</html>

@@ -18,6 +18,13 @@
 </head>
 <body>
 	<h2>[PRODUCT LIST]</h2>
+	<c:if test="${user_id == null }">
+		<a href="login"> [LOGIN] </a><br><br>
+	</c:if>
+	<c:if test="${user_id != null }">
+		<a href="logout"> [LOGOUT] </a>
+		<span>welcome! ${user_name}</span><br><br>
+	</c:if>
 	<a href="insert"> [INSERT PRODUCT] </a>
 	<form name="frm">
 		<input type="hidden" name="page" value="1">

@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.util.WebUtils;
 
 import com.example.domain.Criteria;
 import com.example.domain.PageMaker;
@@ -169,12 +173,28 @@ public class ProductController {
 	}
 	
 	@RequestMapping("list")
-	public void list(Criteria cri, Model model) {
+	public String list(Criteria cri, Model model,HttpServletRequest request, HttpSession session) {
+		
+		// 쿠키에 로그인 정보가 있으면 로그인 유지
+		Cookie cookie = WebUtils.getCookie(request, "user_id");
+		if(cookie != null) {
+			request.getSession().setAttribute("user_id", cookie.getValue());
+		}
+		
+		String dest = (String)session.getAttribute("dest");
+		System.out.println("dest......................" + dest);
+		if(dest != null) {
+			session.removeAttribute("dest");
+			return "redirect:" + dest;
+		}
+		
 		PageMaker pm = new PageMaker();
 		pm.setCri(cri);
 		pm.setTotalCount(mapper.totalCount(cri));
 		model.addAttribute("pm", pm);
 		model.addAttribute("list", mapper.list(cri));
+		
+		return "list";
 	}
 	
 	@RequestMapping("read")

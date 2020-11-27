@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> MAIN </title>
+<style>
+	#calendar {overflow:hidden; width:728px;}
+	.day {width:100px; height:100px; float:left; border:1px gray solid; padding:1px;}
+</style>
+</head>
+<body>
+
+<div id="calendar"></div>
+	<script id="temp" type="text/x-handlebars-template">
+		{{#each .}}
+			<div class="day">
+				{{day}}{{{y dow}}}
+			</div>
+		{{/each}}
+	</script>
+	<script>
+		Handlebars.registerHelper("y", function(dow){
+			if(dow==7) return "<br>";
+		});
+	</script>
+
+
+
+</body>
+<script>
+	
+	getList();
+	
+	function getList() {
+		var year = "2020";
+		var month = "10";
+		$.ajax({
+			type:"get",
+			url:"/day/list",
+			data:{"year":year, "month":month},
+			success:function(data) {
+				var temp = Handlebars.compile($("#temp").html());
+				 $("#calendar").html(temp(data));
+			}
+		});
+	}
+</script>
+</html>
