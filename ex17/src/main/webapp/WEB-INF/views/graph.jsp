@@ -50,7 +50,6 @@ let title1 = "강좌별 학생 점수";
                 	}
             	});
         	}
-        
     }
 </script>
 </html>

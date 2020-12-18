@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper_oracle.SalesMapper">
+    
+   <select id="salesCategoryCount" resultType="hashmap">
+      SELECT DISTINCT SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,3)+1)) CATEGORY
+      FROM SALESVIEW ORDER BY CATEGORY
+   </select>
+   <select id ="refundCategoryCount" resultType="hashmap">
+      SELECT DISTINCT SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,3)+1)) CATEGORY
+      FROM REFUNDVIEW
+        ORDER BY CATEGORY
+   </select>
+   
+   <select id ="salesAmount" resultType="hashmap">
+      SELECT PAYTYPE, sum(salesAmount) salesAmount, 
+      SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY
+      FROM SALESVIEW 
+      GROUP BY PAYTYPE, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) 
+      ORDER BY LCATEGORY DESC
+   </select>
+   
+   <select id ="cashPayType" resultType ="hashmap">
+      SELECT * FROM(
+      SELECT PAYTYPE, COUNT(PAYTYPE) PAYCOUNT, SUM(SALESAMOUNT) PAYSUM
+      FROM SALESVIEW 
+      WHERE DAY = #{date}  
+      GROUP BY PAYTYPE
+      ORDER BY PAYTYPE DESC)
+      WHERE PAYTYPE = '현금'
+   </select>
+   
+   <select id ="cardPayType" resultType ="hashmap">
+      SELECT * FROM(
+      SELECT PAYTYPE, COUNT(PAYTYPE) PAYCOUNT, SUM(SALESAMOUNT) PAYSUM
+      FROM SALESVIEW 
+      WHERE DAY = #{date}  
+      GROUP BY PAYTYPE
+      ORDER BY PAYTYPE DESC)
+      WHERE PAYTYPE = '카드'
+   </select>
+   
+   <select id ="etcPayType" resultType ="hashmap">
+      SELECT * FROM(
+      SELECT PAYTYPE, COUNT(PAYTYPE) PAYCOUNT, SUM(SALESAMOUNT) PAYSUM
+      FROM SALESVIEW 
+      WHERE DAY = #{date}  
+      GROUP BY PAYTYPE
+      ORDER BY PAYTYPE DESC)
+      WHERE PAYTYPE = '기타'
+   </select>
+   
+   <select id ="refundCashPayType" resultType ="hashmap">
+      SELECT * FROM(
+      SELECT PAYTYPE, COUNT(PAYTYPE) PAYCOUNT, SUM(SALESAMOUNT) PAYSUM
+      FROM REFUNDVIEW 
+      WHERE DAY = #{date}  
+      GROUP BY PAYTYPE
+      ORDER BY PAYTYPE DESC)
+      WHERE PAYTYPE = '현금'
+   </select>
+   <select id ="refundCardPayType" resultType ="hashmap">
+      SELECT * FROM(
+      SELECT PAYTYPE, COUNT(PAYTYPE) PAYCOUNT, SUM(SALESAMOUNT) PAYSUM
+      FROM REFUNDVIEW 
+      WHERE DAY = #{date}  
+      GROUP BY PAYTYPE
+      ORDER BY PAYTYPE DESC)
+      WHERE PAYTYPE = '카드'
+   </select>
+   <select id ="refundEtcPayType" resultType ="hashmap">
+      SELECT * FROM(
+      SELECT PAYTYPE, COUNT(PAYTYPE) PAYCOUNT, SUM(SALESAMOUNT) PAYSUM
+      FROM REFUNDVIEW 
+      WHERE DAY = #{date}  
+      GROUP BY PAYTYPE
+      ORDER BY PAYTYPE DESC)
+      WHERE PAYTYPE = '기타'
+   </select>
+   
+   <select id ="lCategoryPayType" resultType ="hashmap">
+      SELECT * FROM(
+      SELECT SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY, PAYTYPE, COUNT(PAYTYPE) PAYCOUNT, SUM(SALESAMOUNT) SALESSUM, COMPANYCODE
+      FROM SALESVIEW 
+      GROUP BY PAYTYPE, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)), COMPANYCODE
+      ORDER BY LCATEGORY ASC)
+      WHERE LCATEGORY = #{lC} AND PAYTYPE = #{pay} 
+   </select>
+
+    <select id ="subTotal" resultType ="hashmap">
+       SELECT SALESSUM, LCATEGORY FROM(
+      SELECT SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY, SUM(SALESAMOUNT) SALESSUM
+      FROM SALESVIEW 
+      WHERE DAY = #{date}
+      GROUP BY SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1))
+      ORDER BY LCATEGORY ASC)
+      WHERE LCATEGORY = #{LCATEGORY}
+    </select>
+    
+    <select id ="mCategoryPay" resultType ="hashmap">
+       SELECT MCATEGORY, SALESCOUNT, SALESAMOUNT FROM(
+      SELECT DISTINCT SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1) MCATEGORY, COUNT(SALESCOUNT) SALESCOUNT, SUM(SALESAMOUNT) SALESAMOUNT
+      FROM SALESVIEW 
+      GROUP BY CATEGORYNAME
+      ORDER BY MCATEGORY DESC)
+      WHERE MCATEGORY = #{MCATEGORY}
+    </select>
+    
+    <select id ="salesCategoryPayType" resultType="hashmap">
+      select * from
+      (SELECT sum(salesAmount) salesAmount, payType, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY 
+      FROM SALESVIEW 
+      where day = #{date}  
+      group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)), payType)
+      where payType = #{payType} and lCategory = #{lCategory}
+   </select>
+   
+   <select id ="salesMCategoryPayType" resultType="hashmap">
+      select * from
+      (SELECT sum(salesAmount) salesAmount, salesCount, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1) MCATEGORY 
+      FROM SALESVIEW 
+      where day = #{date} 
+      group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1), salesAmount, salesCount)
+      where mCategory = #{mCategory}
+   </select>
+   <select id ="refundCategoryPayType" resultType="hashmap">
+      select * from 
+      (SELECT sum(salesAmount) refundAmount, payType, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY FROM 
+      refundVIEW 
+      where day = #{date}
+      group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)), payType)
+      where payType = #{payType} and lCategory = #{lCategory}
+   </select>
+   <select id ="refundMCategoryPayType" resultType="hashmap">
+      select * from
+      (SELECT sum(salesAmount) salesAmount, salesCount, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1) MCATEGORY 
+      FROM REFUNDVIEW 
+      where day = #{date} 
+      group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1), salesAmount, salesCount)
+      where mCategory = #{MCATEGORY}
+   </select>
+   <select id ="refundSubTotal" resultType ="hashmap">
+      SELECT SALESSUM, LCATEGORY FROM(
+      SELECT SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY, SUM(SALESAMOUNT) SALESSUM
+      FROM REFUNDVIEW 
+      WHERE DAY = #{date}
+      GROUP BY SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+      INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1))
+      ORDER BY LCATEGORY ASC)
+      WHERE LCATEGORY = #{LCATEGORY}
+   </select>
+   
+   
+   
+   
+   
+   
+<select id="salesPayTypeList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) salesAmount, payType, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY FROM SALESVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)), payType)
+	where payType = #{payType} and lCategory = #{lCategory}
+</select>
+
+<select id="refundPayTypeList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) refundAmount, payType, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY FROM REFUNDVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)), payType)
+	where payType = #{payType} and lCategory = #{lCategory}
+</select>
+
+<select id="salesMCategoryList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) salesAmount, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1) MCATEGORY FROM SALESVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)), SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1))
+	where lCategory = #{lCategory} and mCategory = #{mCategory}
+</select>
+
+<select id="refundMCategoryList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) refundAmount, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1) MCATEGORY FROM REFUNDVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)), SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,2)+1))
+	where lCategory = #{lCategory} and mCategory = #{mCategory}
+</select>
+
+<select id="salesSubTotalList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) salesAmount, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY FROM SALESVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)))
+	where lCategory = #{lCategory}
+</select>
+
+<select id="refundSubTotalList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) refundAmount, SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)) LCATEGORY FROM REFUNDVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by SUBSTR(CATEGORYNAME,INSTR(CATEGORYNAME,'/',1,1)+1,
+	INSTR(CATEGORYNAME,'/',1,2)-(INSTR(CATEGORYNAME,'/',1,1)+1)))
+	where lCategory = #{lCategory}
+</select>
+
+<select id="salesTotalList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) salesAmount, payType FROM SALESVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by payType)
+	where payType=#{payType}
+</select>
+
+<select id="refundTotalList" resultType="hashmap">
+	select * from
+	(SELECT sum(salesAmount) refundAmount, payType FROM REFUNDVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode} group by payType)
+	where payType=#{payType}
+</select>
+
+<select id="salesAmount" resultType="int">
+	SELECT sum(salesAmount) salesAmount FROM SALESVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode}
+</select>
+
+<select id="refundAmount" resultType="int">
+	SELECT sum(salesAmount) refundAmount FROM refundVIEW 
+	where day like #{date} || '%' and companyCode = #{companyCode}
+</select>
+</mapper>

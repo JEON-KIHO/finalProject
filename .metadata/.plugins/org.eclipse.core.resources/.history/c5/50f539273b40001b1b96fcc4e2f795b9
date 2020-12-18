@@ -1,0 +1,732 @@
+<%@page import="java.util.GregorianCalendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+<title>매출/환불</title>
+<%
+	GregorianCalendar cal = new GregorianCalendar();
+	String thisYear = cal.get(GregorianCalendar.YEAR)+"";
+	String thisMonth = cal.get(GregorianCalendar.MONTH)+1+"";
+	String thisDay = cal.get(GregorianCalendar.DAY_OF_MONTH)+"";
+%>
+<style>
+/* 	#datePage {overflow:hidden;} */
+/* 	#pre, #next, #sel {width:200px; float:left;} */
+/* 	#sel {overflow:hidden;} */
+/* 	#selYear, #selMonth {float:left;} */
+
+#datePage {overflow:hidden;}
+	#pre, #next {width:160px; float:left;}
+	#sel {float:left; overflow:hidden; width:150px; text-align:center; cursor:default;}
+	#selDate {float:left; width:150px;}
+	#yearList, #monthList {float:left; width:75px;}
+</style>
+</head>
+<body>
+<button id ="btnSales">매출</button>
+<button id ="btnRefund">환불</button>
+
+<div id="datePage">
+	<div id="pre">
+		<input type="button" value="preYear" id="preYear">
+		<input type="button" value="preMonth" id="preMonth">
+	</div>
+	<div id="sel">
+		<div id="selDate"></div>
+		<div id="yearList"></div>
+		<div id="monthList"></div>
+	</div>
+	<div id="next">
+		<input type="button" value="nextMonth" id="nextMonth">
+		<input type="button" value="nextYear" id="nextYear">
+	</div>
+</div>
+
+<table id="salesList" border=1></table>
+
+</body>
+<script type="text/javascript">
+// getYear();
+<%-- var year = <%=thisYear%>; --%>
+// getMonth();
+// var month = "03";
+// var date = year +"/"+ month;
+
+$("#selDate").html(<%=thisYear%> +" / "+ "03");
+$("#yearList").hide();
+$("#monthList").hide();
+let year = $("#selDate").html().split("/")[0];
+year = year.trim();
+let month = $("#selDate").html().split("/")[1];
+month = month.trim();
+let date = year +"/"+ month;
+let amount;
+getYear();
+getMonth();
+
+$("#selDate").on("click", function() {
+	$("#yearList").slideDown();
+	$("#monthList").slideDown();
+});
+
+$("#salesList").on("click", function() {
+	$("#yearList").slideUp();
+	$("#monthList").slideUp();
+});
+
+$("#yearList").on("click", "#year .yData", function() {
+	year = $(this).attr("id");
+	getMonth();
+});
+
+$("#monthList").on("click", "#month .mData", function() {
+	month = $(this).attr("id");
+	alert(year+"/"+month);
+	$("#selDate").html(year +" / "+ month);
+	$("#yearList").slideUp();
+	$("#monthList").slideUp();
+	start();
+});
+
+var countURL = "salesCategoryCount.json";
+var payTypeURL = "salesPayTypeList.json";
+var mCategoryURL = "salesMCategoryList.json";
+var subTotalURL = "salesSubTotalList.json";
+var totalURL = "salesTotalList.json";
+
+$("#btnSales").prop("disabled", true);
+
+$("#btnSales").on("click", function() {
+	$("#btnSales").prop("disabled", true);
+	$("#btnRefund").prop("disabled", false);
+	countURL = "salesCategoryCount.json";
+	payTypeURL = "salesPayTypeList.json";
+	mCategoryURL = "salesMCategoryList.json";
+	subTotalURL = "salesSubTotalList.json";
+	totalURL = "salesTotalList.json";
+	start();
+});
+$("#btnRefund").on("click", function() {
+	$("#btnRefund").prop("disabled", true);
+	$("#btnSales").prop("disabled", false);
+	countURL = "refundCategoryCount.json";
+	payTypeURL = "refundPayTypeList.json";
+	mCategoryURL = "refundMCategoryList.json";
+	subTotalURL = "refundSubTotalList.json";
+	totalURL = "refundTotalList.json";
+	start();
+	
+});
+
+// yearCount();
+// monthCount();
+start();
+
+function start() {
+	yearCount();
+	monthCount();
+	 getSalesCategoryCount();
+	 getAmount();
+	   setTimeout(getPayTypeList, 200);
+	   setTimeout(getMCategoryList, 200);
+	   setTimeout(getSubTotalList, 200);
+	   setTimeout(getTotalList, 200);
+}
+
+	$("#preYear").on("click", function() {
+		year--;
+		monthControl();
+		start();
+	});
+
+	$("#nextYear").on("click", function() {
+		year++;
+		monthControl();
+		start();
+	});
+
+	$("#preMonth").on("click", function() {
+		   month = $("#selDate").html().split("/")[1];
+		   month = month.trim();
+		if(month == 01 || month == 1) {
+			year--;
+			getMonth();
+			month = "12";
+		} else {
+			month--;
+			for(var i = 1; i <= 9; i++) {
+				if(month == i) {
+					month = "0" + i;
+				}
+			}
+		}
+		date = year +"/"+ month;
+		$("#selDate").html(year +" / "+ month);
+		start();
+	});
+
+	$("#nextMonth").on("click", function() {
+		month = $("#selDate").html().split("/")[1];
+		   month = month.trim();
+		if(month == 12) {
+			year++;
+			getMonth();
+			month = "01";
+		} else {
+			month++;
+			for(var i = 1; i <= 9; i++) {
+				if(month == i) {
+					month = "0" + i;
+				}
+			}
+		}
+		date = year +"/"+ month;
+		$("#selDate").html(year +" / "+ month);
+		start();
+	});
+	
+	 function yearCount() {
+		   $.ajax({
+			  type:"get",
+			  url:"SRYearList.json",
+			  success:function(data) {
+				  let yArray = new Array();
+				  $(data).each(function() {
+					 yArray.push(this);
+				  });
+				  var first = "20" + yArray[0];
+				  var last = "20" + yArray[yArray.length-1];
+				  
+				  if(year == first) {
+					  $("#preYear").prop("disabled", true);
+				  }
+				  if(year != first) {
+					  $("#preYear").prop("disabled", false);
+				  }
+				  if(year == last) {
+					  $("#nextYear").prop("disabled", true);
+				  }
+				  if(year != last) {
+					  $("#nextYear").prop("disabled", false);
+				  }
+			  }
+		   });
+	   }
+
+	   function monthCount() {
+		   YM();
+		   $.ajax({
+				  type:"get",
+				  url:"SRYearList.json",
+				  success:function(data) {
+					  let yArray = new Array();
+					  $(data).each(function() {
+						 yArray.push(this);
+					  });
+					  var first = "20" + yArray[0];
+					  var last = "20" + yArray[yArray.length-1];
+					  
+						  $.ajax({
+							  type:"get",
+							  url:"SRMonthList.json",
+							  data:{"year":year},
+							  success:function(data) {
+								  let mArray = new Array();
+								  $(data).each(function() {
+									  mArray.push(this);
+								  });
+								  var mFirst = mArray[0];
+								  for(var i = 1; i <= 9; i++) {
+									  if(mFirst == i) {
+										  mFirst = "0" + mFirst;
+									  }
+								  }
+								  var mLast = mArray[mArray.length-1];
+								  for(var i = 1; i <= 9; i++) {
+									  if(mLast == i) {
+										  mLast = "0" + mLast;
+									  }
+								  }
+								  if(year == first) {
+								  	if(month == mFirst) {
+									 	 $("#preMonth").prop("disabled", true);
+								  	}
+								  	if(month != mFirst) {
+									  	$("#preMonth").prop("disabled", false);
+								 	 }
+							 	  }
+								  if(year == last) {
+									  if(month == mLast) {
+										  $("#nextMonth").prop("disabled", true);
+									  }
+									  if(month != mLast) {
+										  $("#nextMonth").prop("disabled", false);
+									  }
+								  }
+							  }
+						  });
+				  }
+			   });
+	   }
+	   
+	   function preMonthControl() {
+		   $.ajax({
+				  type:"get",
+				  url:"SRYearList.json",
+				  success:function(data) {
+					  let yArray = new Array();
+					  $(data).each(function() {
+						 yArray.push(this);
+					  });
+					  var first = "20" + yArray[0];
+					  var last = "20" + yArray[yArray.length-1];
+					   year--;
+						  $.ajax({
+							  type:"get",
+							  url:"SRMonthList.json",
+							  data:{"year":year},
+							  success:function(data) {
+								  let mArray = new Array();
+								  $(data).each(function() {
+									  mArray.push(this);
+								  });
+								  var mFirst = mArray[0];
+								  for(var i = 1; i <= 9; i++) {
+									  if(mFirst == i) {
+										  mFirst = "0" + mFirst;
+									  }
+								  }
+								  var mLast = mArray[mArray.length-1];
+								  for(var i = 1; i <= 9; i++) {
+									  if(mLast == i) {
+										  mLast = "0" + mLast;
+									  }
+								  }
+								  
+								  if(year == first) {
+									  $("#selDate").html(year +" / "+ mFirst);
+								  }
+								  if(year == last) {
+									  $("#selDate").html(year +" / "+ mLast);
+								  }
+								  
+							  }
+						  });
+				  }
+			   });
+	   }
+   
+   function getAmount() {
+	   YM();
+		$.ajax({
+			type:"get",
+			url:"monthlyTotalAmount.json",
+			data:{"date":date},
+			success:function(data) {
+				amount = data;
+			}
+		});
+	}
+   
+       function getSalesCategoryCount() {
+           var addSalesList = "";
+           var dataCnt = 0;
+           var cnt = 0;
+           var oldCategory;
+           var lCategory;
+           var maxCnt = 0;
+           $.ajax({
+              type:"get",
+              url:countURL,
+              success:function(data) {
+                 var mCategoryArray = new Array();
+                 $(data).each(function() {
+                    mCategoryArray.push(this.CATEGORY.split("/")[1]);
+                 });
+                 var lCategoryArray = new Array();
+                 var mCategoryCountArray = new Array();
+                 $(data).each(function() {
+                    dataCnt++;
+                    var lCategory = this.CATEGORY.split("/")[0];
+                       if(lCategory != oldCategory) {
+                          lCategoryArray.push(lCategory);
+                          cnt = 0;
+                          cnt++;
+                       }if(lCategory == oldCategory) {
+                          cnt++;
+                       }
+                       
+                       if(cnt < maxCnt) {
+                          mCategoryCountArray.push(maxCnt);
+                       }
+                       maxCnt = cnt;
+                       if(mCategoryArray.length == dataCnt) {
+                          mCategoryCountArray.push(maxCnt);
+                       }
+                    oldCategory = lCategory;
+                 });
+                 
+                 var cnt = 0;
+                 var payArray = ['현금', '카드', '기타'];
+                 
+                 for(var i = 0; i < lCategoryArray.length; i++) {
+                    addSalesList += "<tr class='"+lCategoryArray[i]+"'><td width=150 rowspan='"+(mCategoryCountArray[i]+3)+"'>"+lCategoryArray[i]+"</td>";
+                    addSalesList += "<td width=150 rowspan='3'>결제방법</td>";
+                    
+                    for(var a = 0; a < payArray.length; a++) {
+                       var salesLcategoryId = lCategoryArray[i]+"/"+payArray[a];
+                       if(a == 0) {
+                          addSalesList += "<td class='payType'>"+payArray[a]+"</td><td id='"+salesLcategoryId+"' code='"+salesLcategoryId+"' class='payTypeGraph'></td>";
+                       }
+                       if(a != 0) {
+                          addSalesList += "<tr class='"+lCategoryArray[i]+"'><td class='payType'>"+payArray[a]+"</td><td id='"+salesLcategoryId+"' code='"+salesLcategoryId+"' class='payTypeGraph'></td></tr>";
+                       }
+                    }
+                    
+                    addSalesList += "</tr>";
+                    addSalesList += "<tr class='"+lCategoryArray[i]+"'><td width=150 rowspan='"+(mCategoryCountArray[i])+"'>상품명</td>";
+                    
+                    for(var z = 0; z < mCategoryCountArray[i]; z++) {
+                        var salesMcategoryId = lCategoryArray[i] +"/"+ mCategoryArray[cnt];
+                        if(z==0){
+                           addSalesList += "<td class='mc'>"+mCategoryArray[cnt]+"</td><td id ='"+salesMcategoryId+"' mCode ='"+salesMcategoryId+"' class='mcGraph'></td></tr>";
+                        }
+                        if(z!=0){
+                           addSalesList += "<tr class='"+lCategoryArray[i]+"'><td class='mc'>"+mCategoryArray[cnt]+"</td><td id ='"+salesMcategoryId+"' mCode ='"+salesMcategoryId+"' class='mcGraph'></td></tr>";
+                        }
+                        cnt++;
+                     }
+                 
+                    var salesSubId = lCategoryArray[i];
+                    addSalesList += "<td colspan=3>소계</td><td id ='"+salesSubId+"' sCode ='"+salesSubId+"' class ='st'></td></tr>"    
+                 }
+                 
+                 var tcnt = 0;
+                 for(var a = 0; a < payArray.length; a++) {
+                    var salesTotalId = payArray[a];
+                    if(a == 0) {
+                       addSalesList += "<tr class='totalAmount'><td rowspan='3'>합계</td><td colspan ='2'>"+payArray[a]+"</td><td id='"+salesTotalId+"' totalType ='"+salesTotalId+"' class='total'></td></tr>";
+                    }
+                    if(tcnt != 0) {
+                       addSalesList += "<tr class='totalAmount'><td colspan ='2'>"+payArray[a]+"</td><td id='"+salesTotalId+"' totalType ='"+salesTotalId+"' class='total'></td></tr>";
+                    }
+                    tcnt++;
+                 }
+                 
+                 $("#salesList").html(addSalesList);      
+                 
+              }
+              });
+            }
+       
+	function getPayTypeList() {
+		YM();
+		$("#salesList tr").each(function() {
+			var lCategory = $(this).attr("class");
+			var payType = $(this).find(".payType").html();
+			var LP = lCategory +"/"+ payType;
+			if($(this).find(".payTypeGraph").attr("code") == LP) {
+				$.ajax({
+					type:"get",
+					url:payTypeURL,
+					data:{"date":date, "payType":payType, "lCategory":lCategory},
+					success:function(result) {
+						if(result.length == 1) {
+					    	   var result = [["분류","금액"],[payType,0]];
+					       }
+						function changeChart(){
+						       google.charts.load('current', {'packages':['corechart']});
+						       google.charts.setOnLoadCallback(drawVisualization);
+						      		function drawVisualization() {
+						                    	var data = google.visualization.arrayToDataTable(result); /* 데이터 셋팅 */
+						                    	var options = {
+						                    			vAxis : {
+						                    			},
+						                    			hAxis : {
+						                    				maxValue : amount,
+						                    				minValue : 0,
+						                    				ticks : ['0%', '100%']
+						                    			},
+						                    			series : {
+						                    				0: {color: 'red'}
+						                    				
+						                    			},
+						                    			bar : {
+						                    				groupWidth : '40%' // 그래프 너비 설정 %
+						                    			},
+						                    			legend : 'none'
+						                    			}; /* 옵션 셋팅 */
+						                    	var chart = new google.visualization.BarChart(document.getElementById(LP));
+						                    		chart.draw(data, options); /* 차트 그리기 */
+						        	}
+						    }
+						$(this).find(".payTypeGraph").html(changeChart());
+					}
+				});
+			}
+		});
+	}
+
+	function getMCategoryList() {
+		YM();
+		$("#salesList tr").each(function() {
+			var lCategory = $(this).attr("class");
+			var mCategory = $(this).find(".mc").html();
+			var LM = lCategory +"/"+ mCategory;
+			if($(this).find(".mcGraph").attr("mcode") == LM) {
+				$.ajax({
+					type:"get",
+					url:mCategoryURL,
+					data:{"date":date, "mCategory":mCategory, "lCategory":lCategory},
+					success:function(result) {
+						if(result.length == 1) {
+					    	   var result = [["분류","금액"],[mCategory,0]];
+					       }
+						function changeChart(){
+						       google.charts.load('current', {'packages':['corechart']});
+						       google.charts.setOnLoadCallback(drawVisualization);
+						      		function drawVisualization() {
+//						                     var result = [["과목","점수"],["국어",90],["영어",80]];
+						                    	var data = google.visualization.arrayToDataTable(result); /* 데이터 셋팅 */
+						                    	var options = {
+						                    			vAxis : {
+						                    			},
+						                    			hAxis : {
+						                    				maxValue : amount,
+						                    				minValue : 0,
+						                    				ticks : ['0%', '100%']
+						                    			},
+						                    			series : {
+						                    				0: {color: 'blue'}
+						                    				
+						                    			},
+						                    			bar : {
+						                    				groupWidth : '40%' // 그래프 너비 설정 %
+						                    			},
+						                    			legend : 'none'
+						                    			}; /* 옵션 셋팅 */
+						                    	var chart = new google.visualization.BarChart(document.getElementById(LM));
+						                    		chart.draw(data, options); /* 차트 그리기 */
+						        	}
+						    }
+						$(this).find(".mcGraph").html(changeChart());
+					}
+				});
+			}
+			
+		});
+	}
+	
+	function getSubTotalList() {
+		YM();
+		$("#salesList tr").each(function() {
+			if($(this).find(".st").attr("scode") != null) {
+				var lCategory = $(this).find(".st").attr("scode");
+				$.ajax({
+					type:"get",
+					url:subTotalURL,
+					data:{"date":date, "lCategory":lCategory},
+					success:function(result) {
+						if(result.length == 1) {
+					    	   var result = [["분류","금액"],[lCategory,0]];
+					       }
+						function changeChart(){
+						       google.charts.load('current', {'packages':['corechart']});
+						       google.charts.setOnLoadCallback(drawVisualization);
+						      		function drawVisualization() {
+//						                     var result = [["과목","점수"],["국어",90],["영어",80]];
+						                    	var data = google.visualization.arrayToDataTable(result); /* 데이터 셋팅 */
+						                    	var options = {
+						                    			vAxis : {
+						                    			},
+						                    			hAxis : {
+						                    				maxValue : amount,
+						                    				minValue : 0,
+						                    				ticks : ['0%', '100%']
+						                    			},
+						                    			series : {
+						                    				0: {color: 'green'}
+						                    				
+						                    			},
+						                    			bar : {
+						                    				groupWidth : '40%' // 그래프 너비 설정 %
+						                    			},
+						                    			legend : 'none'
+						                    			}; /* 옵션 셋팅 */
+						                    	var chart = new google.visualization.BarChart(document.getElementById(lCategory));
+						                    		chart.draw(data, options); /* 차트 그리기 */
+						        	}
+						    }
+						$(this).find(".st").html(changeChart());
+					}
+				});
+			}
+		});
+	}
+	
+	function getTotalList() {
+		YM();
+		$("#salesList tr").each(function() {
+			if($(this).attr("class") == "totalAmount") {
+				var payType = $(this).find(".total").attr("totalType");
+				$.ajax({
+					type:"get",
+					url:totalURL,
+					data:{"date":date, "payType":payType},
+					success:function(result) {
+						if(result.length == 1) {
+					    	   var result = [["분류","금액"],[payType,0]];
+					       }
+						function changeChart(){
+						       google.charts.load('current', {'packages':['corechart']});
+						       google.charts.setOnLoadCallback(drawVisualization);
+						      		function drawVisualization() {
+//						                     var result = [["과목","점수"],["국어",90],["영어",80]];
+						                    	var data = google.visualization.arrayToDataTable(result); /* 데이터 셋팅 */
+						                    	var options = {
+						                    			vAxis : {
+						                    			},
+						                    			hAxis : {
+						                    				maxValue : amount,
+						                    				minValue : 0,
+						                    				ticks : ['0%', '100%']
+						                    			},
+						                    			series : {
+						                    				0: {color: 'pink'}
+						                    				
+						                    			},
+						                    			bar : {
+						                    				groupWidth : '40%' // 그래프 너비 설정 %
+						                    			},
+						                    			legend : 'none'
+						                    			}; /* 옵션 셋팅 */
+						                    	var chart = new google.visualization.BarChart(document.getElementById(payType));
+						                    		chart.draw(data, options); /* 차트 그리기 */
+						        	}
+						    }
+						$(this).find(".total").html(changeChart());
+
+					}
+				});
+			}
+		});
+	}
+	
+	function getYear() {
+		var yearList = "<div id='year'>";
+		var y = 0;
+		$.ajax({
+			type:"get",
+			url:"SRdailyYearList.json",
+			dataType:"json",
+			success:function(data) {
+				let yArray = new Array();
+				$(data).each(function() {
+					y = this.year;
+					yearList += "<div id='"+y+"' class='yData'>"+y+"</div>";
+				});
+				yearList += "</div>";
+				$("#yearList").html(yearList);
+			}
+		});
+	}
+
+	function getMonth() {
+		
+		var monthList = "<div id='month'>";
+		var m = 0;
+		$.ajax({
+			type:"get",
+			url:"SRdailyMonthList.json",
+			dataType:"json",
+			data:{"year":year},
+			success:function(data) {
+				$(data).each(function() {
+					m = this.month;
+					monthList += "<div id='"+m+"' class='mData'>"+m+"</div>";
+				});
+				monthList += "</div>";
+				$("#monthList").html(monthList);
+			}
+		});
+	}
+	
+	function YM() {
+		 year = $("#selDate").html().split("/")[0];
+		   year = year.trim();
+		   month = $("#selDate").html().split("/")[1];
+		   month = month.trim();
+		   date = year +"/"+ month;
+	}
+	
+// 	function getYear() {
+// 		var yearOption = "<select name='year' id='year' class='selDate'>";
+// 		var cnt = 0;
+// 		var y = 0;
+// 		$.ajax({
+// 			type:"get",
+// 			url:"SRdailyYearList.json",
+// 			dataType:"json",
+// 			success:function(data) {
+// 				let yArray = new Array();
+// 				$(data).each(function() {
+// 					y = this.year;
+<%-- 					if(y == <%=thisYear%>) { --%>
+// 						yearOption += "<option value='"+y+"' selected>"+y+"</option>";
+// 					}
+<%-- 					if(y != <%=thisYear%>) { --%>
+// 						yearOption += "<option value='"+y+"'>"+y+"</option>";
+// 					}
+// 				});
+// 				yearOption += "</select>";
+// 				$("#selYear").html(yearOption);
+// 				$("#year").val(y).prop("selected", true);
+				
+// 				yearCount();
+// 			}
+// 		});
+// 	}
+
+// 	function getMonth() {
+// 		var monthOption = "<select name='month' id='month' class='selDate'>";
+// 		var daily;
+// 		var cnt = 0;
+// 		var m = 0;
+// 		$.ajax({
+// 			type:"get",
+// 			url:"SRdailyMonthList.json",
+// 			dataType:"json",
+// 			data:{"date":year},
+// 			success:function(data) {
+// 				$(data).each(function() {
+// 					daily = this.day;
+// 					var month = daily.split("-")[1];
+// 					var oldM = month;
+// 					if(cnt == 0) {
+// 						monthOption += "<option value='"+oldM+"'>"+oldM+"</option>";
+// 					} else {
+// 						if(oldM != m) {
+// 							monthOption += "<option value='"+oldM+"'>"+oldM+"</option>";
+// 						}
+// 					}
+// 					m = oldM;
+// 					cnt++;
+// 				});
+// 				monthOption += "</select>";
+// 				$("#selMonth").html(monthOption);
+// 				$("#month").val(m).prop("selected", true);
+				
+// 				monthCount();
+// 			}
+// 		});
+// 	}
+	
+</script>
+</html>

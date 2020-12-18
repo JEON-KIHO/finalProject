@@ -145,6 +145,9 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\spring\sss"/>
+			<item value="C:\Users\owner\Desktop\222\sss"/>
+			<item value="C:\Users\owner\Desktop\zip\sss"/>
 			<item value="D:\spring\setup"/>
 			<item value="C:\Users\owner\Documents\카카오톡 받은 파일\setup"/>
 		</list>

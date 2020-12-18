@@ -1,0 +1,605 @@
+package com.example.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.domain.DayVO;
+import com.example.mapper_oracle.SalesMapper;
+
+
+@Controller
+public class SalesController {
+   
+   @Autowired
+   SalesMapper salesMapper;
+   
+      @RequestMapping("salesCategoryCount.json")
+      @ResponseBody
+      public List<HashMap<String, Object>> salesCategoryCountJson() {
+         
+         return salesMapper.salesCategoryCount();
+      }
+
+      @RequestMapping("refundCategoryCount.json")
+      @ResponseBody
+      public List<HashMap<String, Object>> refundCategoryCountJson(){
+         
+         return salesMapper.refundCategoryCount();
+      }
+      
+      @RequestMapping("sales")
+      public void sales() {
+         
+      }
+      
+      @RequestMapping("cashPayType.json")
+      @ResponseBody
+      public List<ArrayList<Object>> cashPayJson(String date){
+            List<HashMap<String, Object>> array = salesMapper.cashPayType(date);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("결제방식");
+            arr.add("결제금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add(map.get("PAYSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("cardPayType.json")
+      @ResponseBody
+      public List<ArrayList<Object>> cardPayJson(String date){
+            List<HashMap<String, Object>> array = salesMapper.cardPayType(date);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("결제방식");
+            arr.add("결제금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add(map.get("PAYSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("etcPayType.json")
+      @ResponseBody
+      public List<ArrayList<Object>> etcPayJson(String date){
+            List<HashMap<String, Object>> array = salesMapper.etcPayType(date);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("결제방식");
+            arr.add("결제금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add(map.get("PAYSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("refundCashPayType.json")
+      @ResponseBody
+      public List<ArrayList<Object>> refundCashPayJson(String date){
+            List<HashMap<String, Object>> array = salesMapper.refundCashPayType(date);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("결제방식");
+            arr.add("환불금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add(map.get("PAYSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("refundCardPayType.json")
+      @ResponseBody
+      public List<ArrayList<Object>> refundCardPayJson(String date){
+            List<HashMap<String, Object>> array = salesMapper.refundCardPayType(date);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("결제방식");
+            arr.add("환불금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add(map.get("PAYSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("refundEtcPayType.json")
+      @ResponseBody
+      public List<ArrayList<Object>> refundEtcPayJson(String date){
+            List<HashMap<String, Object>> array = salesMapper.refundEtcPayType(date);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("결제방식");
+            arr.add("환불금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add(map.get("PAYSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("lCategoryPayType.json")
+      @ResponseBody
+      public List<ArrayList<Object>> lCategoryPayJson(String LCATEGORY, String PAYTYPE){
+            List<HashMap<String, Object>> array = salesMapper.lCategoryPayType(LCATEGORY, PAYTYPE);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("결제방식");
+            arr.add("결제금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add(map.get("SALESSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+
+      @RequestMapping("subTotal.json")
+      @ResponseBody
+      public List<ArrayList<Object>> subTotalJson(String date, String LCATEGORY){
+            List<HashMap<String, Object>> array = salesMapper.subTotal(date, LCATEGORY);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("상품");
+            arr.add("결제금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("LCATEGORY"));
+               arr.add(map.get("SALESSUM"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("mCategoryPay.json")
+      @ResponseBody
+      public List<ArrayList<Object>> mCategoryPayJson(String MCATEGORY){
+            List<HashMap<String, Object>> array = salesMapper.mCategoryPay(MCATEGORY);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("상품");
+            arr.add("판매량");
+            arr.add("결제금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array){
+               arr = new ArrayList<>();
+               arr.add(map.get("MCATEGORY"));
+               arr.add(map.get("SALESCOUNT"));
+               arr.add(map.get("SALESAMOUNT"));
+               listArr.add(arr);
+            }
+            
+         return listArr;
+      }
+      
+      @RequestMapping("salesCategoryPayType.json")
+         @ResponseBody
+         public List<ArrayList<Object>> salesCateogryPayTypeJson(String date, String payType, String lCategory) {
+            date = date.substring(2);
+            List<HashMap<String, Object>> array = salesMapper.salesCategoryPayType(date, payType, lCategory);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>();
+            ArrayList<Object> arr = new ArrayList<>();
+            
+            arr.add("분류");
+            arr.add("금액");
+            listArr.add(arr);
+            
+            if(array.size() != 0) {
+               for(HashMap<String, Object> map:array) {
+                  arr = new ArrayList<>();
+                  arr.add(map.get("PAYTYPE"));
+                  arr.add(map.get("SALESAMOUNT"));
+                  listArr.add(arr);
+               }
+            }
+            
+            return listArr;
+         }
+         
+      @RequestMapping("salesMCategoryPayType.json")
+         @ResponseBody
+         public List<ArrayList<Object>> salesMCateogryPayTypeJson(String date, String mCategory) {
+            date = date.substring(2);
+            List<HashMap<String, Object>> array = salesMapper.salesMCategoryPayType(date, mCategory);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>();
+            ArrayList<Object> arr = new ArrayList<>();
+            
+            arr.add("판매량");
+            arr.add("금액");
+            listArr.add(arr);
+            
+            if(array.size() != 0) {
+               for(HashMap<String, Object> map:array) {
+                  arr = new ArrayList<>();
+                  arr.add(map.get("SALESCOUNT"));
+                  arr.add(map.get("SALESAMOUNT"));
+                  listArr.add(arr);
+               }
+            }
+            
+            return listArr;
+         }
+      
+      
+         @RequestMapping("refundCategoryPayType.json")
+         @ResponseBody
+         public List<ArrayList<Object>> refundCateogryPayTypeJson(String date, String payType, String lCategory, HttpSession session) {
+            date = date.substring(2);
+            List<HashMap<String, Object>> array = salesMapper.refundCategoryPayType(date, payType, lCategory);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>();
+            ArrayList<Object> arr = new ArrayList<>();
+            
+            arr.add("분류");
+            arr.add("금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array) {
+               arr = new ArrayList<>();
+               arr.add(map.get("PAYTYPE"));
+               arr.add((int)map.get("REFUNDAMOUNT"));
+               listArr.add(arr);
+            }
+            return listArr;
+         }
+         
+         @RequestMapping("refundMCategoryPayType.json")
+         @ResponseBody
+         public List<ArrayList<Object>> refundMCateogryPayTypeJson(String date, String MCATEGORY) {
+            date = date.substring(2);
+            List<HashMap<String, Object>> array = salesMapper.refundMCategoryPayType(date, MCATEGORY);
+            
+            List<ArrayList<Object>> listArr = new ArrayList<>();
+            ArrayList<Object> arr = new ArrayList<>();
+            
+            arr.add("상품");
+            arr.add("환불량");
+            arr.add("금액");
+            listArr.add(arr);
+            
+            if(array.size() != 0) {
+               for(HashMap<String, Object> map:array) {
+                  arr = new ArrayList<>();
+                  arr.add(map.get("MCATEGORY"));
+                  arr.add(map.get("SALESCOUNT"));
+                  arr.add(map.get("SALESAMOUNT"));
+                  listArr.add(arr);
+               }
+            }
+            return listArr;
+         }
+         
+         @RequestMapping("refundSubTotal.json")
+         @ResponseBody
+         public List<ArrayList<Object>> refundSubTotalJson(String date, String LCATEGORY){
+               List<HashMap<String, Object>> array = salesMapper.refundSubTotal(date, LCATEGORY);
+               
+               List<ArrayList<Object>> listArr = new ArrayList<>(); 
+               ArrayList<Object> arr = new ArrayList<>();
+               arr.add("상품");
+               arr.add("금액");
+               listArr.add(arr);
+               
+               for(HashMap<String, Object> map:array){
+                  arr = new ArrayList<>();
+                  arr.add(map.get("LCATEGORY"));
+                  arr.add(map.get("SALESSUM"));
+                  listArr.add(arr);
+               }
+               
+            return listArr;
+         }
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         @RequestMapping("salesList")
+         public void salesList() {
+         }
+         
+         @RequestMapping("salesPayTypeList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> salesPayTypeListJson(String date, String payType, String lCategory) {
+        	 String companyCode = "347-88-00867";
+        	 date = date.substring(2);
+        	 
+        	 List<HashMap<String, Object>> array = salesMapper.salesPayTypeList(date, companyCode, payType, lCategory);
+        	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+             ArrayList<Object> arr = new ArrayList<>();
+             arr.add("유형");
+             arr.add("금액");
+             listArr.add(arr);
+             
+             for(HashMap<String, Object> map:array) {
+            	 arr = new ArrayList<>();
+            	 arr.add(map.get("PAYTYPE"));
+            	 arr.add(map.get("SALESAMOUNT"));
+            	 listArr.add(arr);
+             }
+             return listArr;
+         }
+         
+         @RequestMapping("refundPayTypeList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> refundPayTypeListJson(String date, String payType, String lCategory) {
+        	 String companyCode = "347-88-00867";
+        	 date = date.substring(2);
+        	 
+        	 List<HashMap<String, Object>> array = salesMapper.refundPayTypeList(date, companyCode, payType, lCategory);
+        	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+             ArrayList<Object> arr = new ArrayList<>();
+             arr.add("유형");
+             arr.add("금액");
+             listArr.add(arr);
+             
+             for(HashMap<String, Object> map:array) {
+            	 arr = new ArrayList<>();
+            	 arr.add(map.get("PAYTYPE"));
+            	 arr.add(map.get("REFUNDAMOUNT"));
+            	 listArr.add(arr);
+             }
+             return listArr;
+         }
+         
+         @RequestMapping("salesMCategoryList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> salesMCategoryListJson(String date, String mCategory, String lCategory) {
+        	 String companyCode = "347-88-00867";
+        	 date = date.substring(2);
+        	 
+        	 List<HashMap<String, Object>> array = salesMapper.salesMCategoryList(date, companyCode, mCategory, lCategory);
+        	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+             ArrayList<Object> arr = new ArrayList<>();
+             arr.add("유형");
+             arr.add("금액");
+             listArr.add(arr);
+             
+             for(HashMap<String, Object> map:array) {
+            	 arr = new ArrayList<>();
+            	 arr.add(map.get("MCATEGORY"));
+            	 arr.add(map.get("SALESAMOUNT"));
+            	 listArr.add(arr);
+             }
+             return listArr;
+         }
+         
+         @RequestMapping("refundMCategoryList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> refundMCategoryListJson(String date, String mCategory, String lCategory) {
+        	 String companyCode = "347-88-00867";
+        	 date = date.substring(2);
+        	 
+        	 List<HashMap<String, Object>> array = salesMapper.refundMCategoryList(date, companyCode, mCategory, lCategory);
+        	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+             ArrayList<Object> arr = new ArrayList<>();
+             arr.add("유형");
+             arr.add("금액");
+             listArr.add(arr);
+             
+             for(HashMap<String, Object> map:array) {
+            	 arr = new ArrayList<>();
+            	 arr.add(map.get("MCATEGORY"));
+            	 arr.add(map.get("REFUNDAMOUNT"));
+            	 listArr.add(arr);
+             }
+             return listArr;
+         }
+         
+         @RequestMapping("salesSubTotalList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> salesSubTotalListJson(String date, String lCategory) {
+        	String companyCode = "347-88-00867";
+        	date = date.substring(2);
+        	
+        	List<HashMap<String, Object>> array = salesMapper.salesSubTotalList(date, companyCode, lCategory);
+       	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("분류");
+            arr.add("금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array) {
+           	 arr = new ArrayList<>();
+           	 arr.add(map.get("LCATEGORY"));
+           	 arr.add(map.get("SALESAMOUNT"));
+           	 listArr.add(arr);
+            }
+            return listArr;
+         }
+         
+         @RequestMapping("refundSubTotalList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> refundSubTotalListJson(String date, String lCategory) {
+        	String companyCode = "347-88-00867";
+        	date = date.substring(2);
+        	
+        	List<HashMap<String, Object>> array = salesMapper.refundSubTotalList(date, companyCode, lCategory);
+       	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+            ArrayList<Object> arr = new ArrayList<>();
+            arr.add("분류");
+            arr.add("금액");
+            listArr.add(arr);
+            
+            for(HashMap<String, Object> map:array) {
+           	 arr = new ArrayList<>();
+           	 arr.add(map.get("LCATEGORY"));
+           	 arr.add(map.get("REFUNDAMOUNT"));
+           	 listArr.add(arr);
+            }
+            return listArr;
+         }
+         
+         @RequestMapping("salesTotalList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> salesTotalListKson(String date, String payType) {
+        	 String companyCode = "347-88-00867";
+         	date = date.substring(2);
+        	 
+         	List<HashMap<String, Object>> array = salesMapper.salesTotalList(date, companyCode, payType);
+          	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+               ArrayList<Object> arr = new ArrayList<>();
+               arr.add("분류");
+               arr.add("금액");
+               listArr.add(arr);
+               
+               for(HashMap<String, Object> map:array) {
+              	 arr = new ArrayList<>();
+              	 arr.add(map.get("PAYTYPE"));
+              	 arr.add(map.get("SALESAMOUNT"));
+              	 listArr.add(arr);
+               }
+               return listArr;
+         }
+         
+         @RequestMapping("refundTotalList.json")
+         @ResponseBody
+         public List<ArrayList<Object>> refundTotalListKson(String date, String payType) {
+        	 String companyCode = "347-88-00867";
+         	date = date.substring(2);
+        	 
+         	List<HashMap<String, Object>> array = salesMapper.refundTotalList(date, companyCode, payType);
+          	 List<ArrayList<Object>> listArr = new ArrayList<>(); 
+               ArrayList<Object> arr = new ArrayList<>();
+               arr.add("분류");
+               arr.add("금액");
+               listArr.add(arr);
+               
+               for(HashMap<String, Object> map:array) {
+              	 arr = new ArrayList<>();
+              	 arr.add(map.get("PAYTYPE"));
+              	 arr.add(map.get("REFUNDAMOUNT"));
+              	 listArr.add(arr);
+               }
+               return listArr;
+         }
+         
+         @RequestMapping("monthlyTotalAmount.json")
+         @ResponseBody
+         public int monthlyTotalAmountJson(String date) {
+        	 String companyCode = "347-88-00867";
+          	date = date.substring(2);
+        	 int salesAmount = salesMapper.salesAmount(date, companyCode);
+        	 int refundAmount = salesMapper.refundAmount(date, companyCode);
+        	 int amount = 0;
+        	 if(salesAmount >= refundAmount) {
+        		 amount = salesAmount;
+        	 }
+        	 if(salesAmount <= refundAmount) {
+        		 amount = refundAmount;
+        	 }
+        	 return amount;
+         }
+         
+         @RequestMapping("SRdailyYear.json")
+     	@ResponseBody
+     	public List<HashMap<String, Object>> dailyYearJson() {
+        	 String companyCode = "347-88-00867";
+     		List<HashMap<String, Object>> array = salesMapper.SRdailyYearList(companyCode);
+     		System.out.println(array);
+     		return array;
+     	}
+     	
+     	@RequestMapping("SRdailyMonth.json")
+     	@ResponseBody
+     	public List<DayVO> dailyMonthJson(String date) {
+     		String year = date.substring(2);
+     		String companyCode = "347-88-00867";
+     		List<DayVO> array = salesMapper.SRdailyMonthList(year, companyCode);
+     		return array;
+     	}
+     	
+     	@RequestMapping("SRYearList.json")
+     	@ResponseBody
+     	public List<Integer> SRYearListJson() {
+     		String companyCode = "347-88-00867";
+     		return salesMapper.SRYearList(companyCode);
+     	}
+     	
+     	@RequestMapping("SRMonthList.json")
+     	@ResponseBody
+     	public List<Integer> SRMonthListJson(String year) {
+     		year = year.substring(2);
+     		String companyCode = "347-88-00867";
+     		return salesMapper.SRMonthList(year, companyCode);
+     	}
+         
+}

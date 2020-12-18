@@ -1,7 +1,0 @@
-package com.example.mapper_oracle;
-
-import java.sql.Date;
-
-public interface CalendarMapper {
-	public void insert(java.util.Date date);
-}

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper_oracle.StudentMapper">
-<select id="list" resultType="hashmap">
-	select * from 
-	(select rownum rn, scode, sname, dept, birthday from students) t 
-	where rn between #{pageStart}+1 and (#{pageStart}+#{perPageNum})
-</select>
-</mapper>

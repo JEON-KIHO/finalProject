@@ -1,7 +1,0 @@
-package com.example.mapper;
-
-import com.example.domain.BookVO;
-
-public interface BookMapper {
-	public void insert(BookVO vo);
-}

@@ -1,9 +1,0 @@
-package com.example.mapper;
-
-import java.util.List;
-
-import com.example.domain.DayVO;
-
-public interface DayMapper {
-	public DayVO list(DayVO vo);
-}

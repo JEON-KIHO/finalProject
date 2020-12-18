@@ -1,0 +1,13 @@
+package com.example.mapper_oracle;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.example.domain.DayVO;
+
+public interface ReadMapper {
+	public List<DayVO> salesData(@Param("date") String date, @Param("companyCode") String companyCode);
+	public List<DayVO> refundData(@Param("date") String date, @Param("companyCode") String companyCode);
+	public List<DayVO> costData(@Param("date") String date, @Param("companyCode") String companyCode);
+}

@@ -1,7 +1,0 @@
-package com.example.mapper_oracle;
-
-import com.example.domain.DayVO;
-
-public interface DayMapper {
-	public List<DayVO> list(DayVO vo);
-	}
