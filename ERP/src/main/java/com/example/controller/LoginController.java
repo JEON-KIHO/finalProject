@@ -3,20 +3,25 @@ package com.example.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.util.WebUtils;
 
 import com.example.domain.AdminVO;
 import com.example.mapper_oracle.AdminMapper;
@@ -35,41 +40,76 @@ public class LoginController {
  AdminMapper aMapper;
   @Autowired
  ProductMapper mapper;
-	
-  @RequestMapping("login")
-  public void login(){
   
+  @RequestMapping("lightBox")
+  public void lightBox() {
+  }
+	
+  @RequestMapping("schedule")
+  public void schedule() {
   }
   
+  @RequestMapping("login")
+  public void login(){
+  }
   
   @RequestMapping("company")
   public void company(){
-     
-
   }
+  
   @RequestMapping("mainlogin")
   public void mainlogin() {
-     
-     
   }
 
   @RequestMapping("main")
   public void main(){
-     
   }
   
   @RequestMapping("insert")
   public void insert() {
-
   }
   
   @RequestMapping(value = "insert", method=RequestMethod.POST)
      public String insertPost(AdminVO vo, @RequestParam("companyType") String companyType){
         vo.setCompanyType(companyType);
+        
+        if(vo.getCompanyCode().length() <= 10) {
+        	String companyCode = vo.getCompanyCode();
+        	String c1 = companyCode.substring(0, 3);
+        	String c2 = companyCode.substring(3, 5);
+        	String c3 = companyCode.substring(5);
+        	companyCode = c1 +"-"+ c2 +"-"+ c3;
+        	vo.setCompanyCode(companyCode);
+        }
+        
+        if(vo.getCompanyCorporate() != null) {
+        	String companyCorporate = vo.getCompanyCorporate();
+        	String cp1 = companyCorporate.substring(0, 6);
+        	String cp2 = companyCorporate.substring(6);
+        	companyCorporate = cp1 +"-"+ cp2;
+        	vo.setCompanyCorporate(companyCorporate);
+        }
+        
         mapper.insert(vo);
         
-        return "redirect:login";
+        return "redirect:category";
      }
+  
+  @RequestMapping("pwChk.json")
+  @ResponseBody
+  public int pwChkJson(HttpSession session, String password) {
+	  AdminVO vo = aMapper.read((String) session.getAttribute("adminId"));
+	  String pw = vo.getAdminPassword();
+	  int cnt = 0;
+	  if(pw.equals(password)) {
+		  cnt = 0;
+	  }
+	  if(!pw.equals(password)) {
+		  cnt = 1;
+	  }
+	  return cnt;
+	  
+  }
   // 비밀번호 변경
    @RequestMapping("pwUpdate")
    public void pwUpdate() {
@@ -102,23 +142,8 @@ public class LoginController {
 ////     }
 //     mapper.insert(vo);
 //  }
-  //list
-  @RequestMapping("list")
-     public String list(Model model, HttpSession session, HttpServletRequest request) {
-        Cookie cookie = WebUtils.getCookie(request, "adminId");
-        if (cookie != null) {
-           session.setAttribute("adminId", cookie.getValue());
-        }
 
-        String dest = (String) session.getAttribute("dest");
-        if (session.getAttribute("dest") != null) {
-           session.removeAttribute("dest");
-           return "redirect:" + dest;
-        }
-        model.addAttribute("list", mapper.list());
-        return "list";
-     }
-//  // 이미지출력
+   //  // 이미지출력
 //  @RequestMapping("display") // display?fileName=6de77153-9004-4322-88dd-4403a01fe987_img24
 //  @ResponseBody
 //  public ResponseEntity<byte[]> display(String fileName) throws Exception {
@@ -165,6 +190,39 @@ public class LoginController {
 //        return array;
 //     }
    
+ //사업자 번호 셀리늄
+   @RequestMapping("company.json")
+  @ResponseBody
+  public HashMap<String, String> companyJson(String companyCode, AdminVO vo, HttpSession session,HttpServletResponse response) throws Exception {
+     
+     HashMap<String, String> array = new HashMap<>();
+     System.setProperty("webdriver.chrome.driver", "d:/spring/chromedriver.exe"); //  뱶 씪誘몃쾭  젙 쓽
+     ChromeOptions options= new ChromeOptions();
+     options.addArguments("headless");
+     WebDriver driver = new ChromeDriver(options);
+     driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+     driver.get("https://teht.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/ab/a/a/UTEABAAA13.xml");
+     
+
+     WebElement insert= driver.findElement(By.xpath("//*[@id='bsno']"));
+     insert.sendKeys(companyCode);
+     
+     WebElement btnSearch = driver.findElement(By.xpath("//*[@id='trigger5']"));
+     btnSearch.click();
+     
+     WebDriverWait wait = new WebDriverWait(driver, 6);
+      wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='grid2_cell_0_1']")));
+     
+     WebElement result = driver.findElement(By.xpath("//*[@id='grid2_cell_0_1']"));
+     array.put("companyCode", result.getText());
+     System.out.println(result.getText());
+     
+//      session.setAttribute("companyCode", vo.getCompanyCode());//세션저장
+     
+//     driver.quit();
+     return array;
+  }
+   
    @ResponseBody
    @RequestMapping(value = "idCheck", method = RequestMethod.POST)
    public int idCheck(String adminId) {
@@ -196,13 +254,16 @@ public class LoginController {
    @RequestMapping("logout")
    public String logOut(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
       session.invalidate();
-
-      return "redirect:list";
+      return "redirect:login";
    }
 
    @RequestMapping("idCheck")
    public void idCheck() {
    }
+   
+   @RequestMapping("category")
+	public void category() {
+	}
    
   
 
@@ -224,16 +285,16 @@ public class LoginController {
 	
 	@RequestMapping("lcategorylist.json")
 	   @ResponseBody
-	   public List<HashMap<String, Object>> lcategorylist( ) {
-		String companyCode = "347-88-00867";
+	   public List<HashMap<String, Object>> lcategorylist(HttpSession session) {
+		String companyCode = (String) session.getAttribute("companyCode");
 	      List<HashMap<String, Object>> array = cMapper.lcategorylist(companyCode);
 	      return array;
 	   }
 	
 	@RequestMapping("mainThisMonthlyTotal.json")
 	@ResponseBody
-	public List<ArrayList<Object>> mainThisMonthlyTotalJson(String date) {
-		String companyCode = "347-88-00867";
+	public List<ArrayList<Object>> mainThisMonthlyTotalJson(String date, HttpSession session) {
+		String companyCode = (String) session.getAttribute("companyCode");
 		date = date.substring(2);
 		
 		HashMap<String, Object> sMap = cMapper.salesThisMonthlyTotal(date, companyCode);

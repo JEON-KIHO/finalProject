@@ -27,35 +27,35 @@ public class InvenController {
 	@RequestMapping("invenDailyYear.json")
 	@ResponseBody
 	public List<DayVO> invenDailyYearJson(HttpSession session) {
-		String companyCode = "";
-		List<DayVO> array = mapper.invenDailyYearList();
+		String companyCode = (String) session.getAttribute("companyCode");
+		List<DayVO> array = mapper.invenDailyYearList(companyCode);
 		return array;
 	}
 	
 	@RequestMapping("invenDailyMonth.json")
 	@ResponseBody
 	public List<DayVO> invenDailyMonthJson(String date, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		String year = date.substring(2);
-		List<DayVO> array = mapper.invenDailyMonthList(year);
+		List<DayVO> array = mapper.invenDailyMonthList(year, companyCode);
 		return array;
 	}
 	
 	@RequestMapping("invenDaily.json")
 	@ResponseBody
 	public List<DayVO> invenDailyJson(String date, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		String year = date.split("/")[0].substring(2);
 		String month = date.split("/")[1];
 		date = year+"/"+month;
-		List<DayVO> array = mapper.invenDailyList(date);
+		List<DayVO> array = mapper.invenDailyList(date, companyCode);
 		return array;
 	}
 
 	@ResponseBody
 	@RequestMapping("invenList.json")
 	public List<HashMap<String, Object>> invenListJson(String date, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		String year = date.split("/")[0].substring(2);
 		String month = date.split("/")[1];
 		String day = date.split("/")[2];
@@ -63,14 +63,14 @@ public class InvenController {
 			day = "0" + day;
 		}
 		String strDate = year +"/"+ month +"/"+ day;
-		List<HashMap<String, Object>> array = mapper.invenList(strDate);
+		List<HashMap<String, Object>> array = mapper.invenList(strDate, companyCode);
 		return array;
 	}
 	
 	@RequestMapping("endInvenList.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> endInvenListJson(HttpSession session) {
-		String companyCode = "347-88-00867";
+		String companyCode = (String) session.getAttribute("companyCode");
 		return mapper.endInvenList(companyCode);
 	}
 }

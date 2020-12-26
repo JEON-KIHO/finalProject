@@ -26,8 +26,7 @@ public class CostController {
    
    @RequestMapping("insertDay.json")
    @ResponseBody
-   public void insertDay(HttpSession session) {
-	   String companyCode = "";
+   public void insertDay() {
       GregorianCalendar cal = new GregorianCalendar();
       int thisYear = cal.get(GregorianCalendar.YEAR);
       int thisMonth = cal.get(GregorianCalendar.MONTH)+1;
@@ -105,7 +104,7 @@ public class CostController {
    @RequestMapping("data.json")
    @ResponseBody
    public List<HashMap<String, Object>> dataJson(String date, HttpSession session) throws ParseException {
-	   String companyCode = "";
+	   String companyCode = (String) session.getAttribute("companyCode");
       String strDate = date.substring(2);
       String year = strDate.split("/")[0];
       String month = strDate.split("/")[1];
@@ -114,13 +113,13 @@ public class CostController {
          day = "0" + day;
       }
       strDate = year +"/"+ month +"/"+ day;
-      return mapper.dataList(strDate);
+      return mapper.dataList(strDate, companyCode);
    }
    
    @RequestMapping("costDailyYearList.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> costDailyYearJson(HttpSession session) {
-   	 String companyCode = "347-88-00867";
+	   String companyCode = (String) session.getAttribute("companyCode");
 		List<HashMap<String, Object>> array = mapper.costDailyYearList(companyCode);
 		List<HashMap<String, Object>> listArr = new ArrayList<>();
 		for(int i = 0; i < array.size(); i++) {
@@ -135,7 +134,7 @@ public class CostController {
 	@ResponseBody
 	public List<HashMap<String, Object>> costDailyMonthJson(HttpSession session, String year) {
 		year = year.substring(2);
-		String companyCode = "347-88-00867";
+		String companyCode = (String) session.getAttribute("companyCode");
 		List<HashMap<String, Object>> array = mapper.costDailyMonthList(year, companyCode);
 		List<HashMap<String, Object>> listArr = new ArrayList<>();
 		for(int i = 0; i < array.size(); i++) {
@@ -149,7 +148,6 @@ public class CostController {
    @RequestMapping("daily.json")
    @ResponseBody
    public List<DayVO> dailyJson(String date, HttpSession session) {
-	   String companyCode = "";
       String year = date.split("/")[0].substring(2);
       String month = date.split("/")[1];
       date = year+"/"+month;
@@ -160,22 +158,22 @@ public class CostController {
    @RequestMapping("costList.json")
    @ResponseBody
    public List<CostVO> costListJson(String date, HttpSession session) {
-	   String companyCode = "";
+	   String companyCode = (String) session.getAttribute("companyCode");
       String year = date.split("/")[0].substring(2);
       String month = date.split("/")[1];
       String strDate = year +"/"+ month;
-      List<CostVO> array = mapper.costList(strDate);
+      List<CostVO> array = mapper.costList(strDate, companyCode);
       return array;
    }
    
    @RequestMapping("monthlyCostList.json")
    @ResponseBody
    public HashMap<String, Object> monthlyCostListJson(String date, HttpSession session) {
-	   String companyCode = "";
+	   String companyCode = (String) session.getAttribute("companyCode");
       String year = date.split("/")[0].substring(2);
       String month = date.split("/")[1];
       String strDate = year +"/"+ month;
-      HashMap<String, Object> array = mapper.monthlyCostList(strDate);
+      HashMap<String, Object> array = mapper.monthlyCostList(strDate, companyCode);
       return array;
    }
    
@@ -188,7 +186,7 @@ public class CostController {
       String month = date.split("/")[1];
       String day = date.split("/")[2];
       String strDate = year +"/"+ month +"/"+ day;
-      List<CostVO> array = mapper.costGraphList(strDate);
+      List<CostVO> array = mapper.costGraphList(strDate, companyCode);
       
       List<ArrayList<Object>> listArr = new ArrayList<>();
       ArrayList<Object> arr = new ArrayList<>();
@@ -213,33 +211,33 @@ public class CostController {
    @RequestMapping("dataList.json")
    @ResponseBody
    public List<HashMap<String, Object>> dataListJson(String date, HttpSession session) {
-	   String companyCode = "";
+	   String companyCode = (String) session.getAttribute("companyCode");
       System.out.println(date);
       String strDate = date.substring(0,7);
       String year = strDate.split("/")[0].substring(2,4);
       String month = strDate.split("/")[1];
 //      String day = strDate.split("/")[2];
       date = year +"/"+ month;
-      return mapper.dataList(date);
+      return mapper.dataList(date, companyCode);
    }
    
    @RequestMapping("cDataList.json")
    @ResponseBody
    public List<HashMap<String, Object>> dataListsJson(String date, HttpSession session) throws Exception {
-	   String companyCode = "";
+	   String companyCode = (String) session.getAttribute("companyCode");
       String strDate = date.substring(2);
       String year = strDate.split("/")[0];
       String month = strDate.split("/")[1];
       String day = strDate.split("/")[2];
       date = year + "/" + month + "/"+ day;
 
-      return mapper.dataList(date);
+      return mapper.dataList(date, companyCode);
    }
    
    @RequestMapping("costYearList.json")
 	@ResponseBody
 	public List<Integer> SRYearListJson(HttpSession session) {
-		String companyCode = "347-88-00867";
+	   String companyCode = (String) session.getAttribute("companyCode");
 		return mapper.costYearList(companyCode);
 	}
 	
@@ -247,15 +245,15 @@ public class CostController {
 	@ResponseBody
 	public List<Integer> SRMonthListJson(HttpSession session, String year) {
 		year = year.substring(2);
-		String companyCode = "347-88-00867";
+		String companyCode = (String) session.getAttribute("companyCode");
 		return mapper.costMonthList(year, companyCode);
 	}
 	
 	@RequestMapping("invenData.json")
 	@ResponseBody
-	public List<DayVO> invenDataJson(String date) {
+	public List<DayVO> invenDataJson(String date, HttpSession session) {
 		date = date.substring(2);
-		String companyCode = "347-88-00867";
+		String companyCode = (String) session.getAttribute("companyCode");
 		List<DayVO> listArr = new ArrayList<>();
 		List<DayVO> array = mapper.invenData(date, companyCode);
 			for(DayVO vo:array) {
@@ -272,9 +270,9 @@ public class CostController {
 	
 	@RequestMapping("readInven.json")
 	@ResponseBody
-	public List<HashMap<String, Object>> readInvenJson(String date) {
+	public List<HashMap<String, Object>> readInvenJson(String date, HttpSession session) {
 		date = date.substring(2);
-		String companyCode = "347-88-00867";
+		String companyCode = (String) session.getAttribute("companyCode");
 		return mapper.readInven(date, companyCode);
 	}
 }

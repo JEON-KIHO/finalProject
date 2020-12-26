@@ -19,8 +19,4 @@
       WHERE adminId = #{adminId}
 </select>
 
-   <select id="readTarget" resultType="int">
-   select count(*) cnt from target where target_day like #{date} || '%' and target_companyCode = #{companyCode}
-   </select>
-   
 </mapper>

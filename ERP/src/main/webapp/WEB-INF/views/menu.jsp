@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="lightBox.jsp"></jsp:include>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
@@ -34,20 +35,8 @@
 
          <br/>
          <br/>
-         <button type="button" class="button" id="logout">로그아웃</button>
+<!--          <button type="button" class="button" id="logout">로그아웃</button> -->
       </div>
    </div>
 </body>
-   <script>
-   
-      $("#logout").click(function() {
-         if (confirm("로그아웃 하시겠습니까?") == true) {
-            alert("로그아웃 하셨습니다.");
-            location.href="login";
-         } else {
-            return;
-         }
-      });
-      
-   </script>
 </html>

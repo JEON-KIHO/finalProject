@@ -1,6 +1,5 @@
 package com.example.mapper_oracle;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,17 +11,19 @@ import com.example.domain.DepositVO;
 public interface DepositMapper {
    public List<DepositVO> Dlist(String compnayCode);
    
-   public DepositVO read(String Depositaccountcode);
+   public List<DepositVO> depositassetsread(@Param("depositAccountCode")String depositAccountCode, @Param("date")String date);
 
    public List<HashMap<String, Object>> depositpercent(String companyCode);
    
-   public List<HashMap<String, Object>> depositTotal(@Param("companyCode")String companyCode, @Param("date")String date);
+   public List<HashMap<String, Object>> depositTotal(String companyCode);
    
-   public List<DayVO> dailyYearList();
-      
-   public List<DayVO> dailyMonthList(String date);
+   public List<Integer> DEYearList(@Param("depositAccountCode")String depositAccountCode, @Param("companyCode")String companyCode);
    
-   public List<HashMap<String, Object>> depositAccountList();
-	public Date depositMaxDayList(String code);
-	public int depositBalanceList(@Param("code") String code, @Param("date") Date date);
+   public List<Integer> DEMonthList(@Param("year") String year, @Param("companyCode") String companyCode, @Param("depositAccountCode")String depositAccountCode);
+   
+   public DepositVO depositassets(String depositAccountCode);
+   
+   public List<HashMap<String, Object>> DEdailyYearList(@Param("depositAccountCode")String depositAccountCode, @Param("companyCode")String companyCode);
+    
+   public List<HashMap<String, Object>> DEdailyMonthList(@Param("year") String year, @Param("companyCode") String companyCode, @Param("depositAccountCode")String depositAccountCode);
 }

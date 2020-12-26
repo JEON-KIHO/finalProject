@@ -47,15 +47,14 @@
    margin-top:100px;margin-bottom:150px;}
    #detail{float:right;height:309;font-size:20px;}
  
- #preYear, #preMonth, #nextMonth, #nextYear{
-    background-color: hsl(222, 100%, 95%);
-    color: hsl(243, 80%, 62%);
-    border-radius: 6px;
-    border-width: 0;
-    display: inline-block;
-    cursor: pointer;
-   box-shadow: 0 5px #B0B0B0;
-}
+ #preYear {border:0; background:#f0f1f4; font-size:25px;}
+#preYear:focus{outline: none;}
+#preMonth {border:0; background:#f0f1f4;font-size:25px;}
+#preMonth:focus{outline: none;}
+#nextMonth {border:0; background:#f0f1f4;font-size:25px;}
+#nextMonth:focus{outline: none;}
+#nextYear {border:0; background:#f0f1f4;font-size:25px;}
+#nextYear:focus{outline: none;}
 
 
 #preYear:hover {
@@ -101,11 +100,12 @@
  display:none;
  background:rgba(0, 0, 0, 0.5);
  z-index:10000;
- overflow-y:scroll;
+ overflow:hidden;
  }
  #lightbox {
  width:900px;
  margin:20px auto;
+ margin-top:70px;
  padding:15px;
  border-radius:5px;
  background:white;
@@ -117,13 +117,14 @@
 #typeList{border:1px solid black;width:850px;margin-top:50px;padding:20px 0px 20px 0px;}
 
   .selDate{text-align:center;}
-  #frm{width:600px;height:600px; float:left;margin-left:20px;}
+  #frm{width:600px;height:500px; float:left;margin-left:20px;}
   #frm1{width:600px;height:300px; float:left;margin-left:20px;}
   #divCenter {
    width: 1450px;
    height: 950px;
    margin-top: 170px;
    margin-left: 230px;
+   margin-bottom:100px;
    background-color:#f0f1f4;
    border:1px solid #597484;
 }
@@ -137,8 +138,8 @@
    <div id="divCenter">
    <div id="datePage">
    <div id="pre">
-      <button type="button" value="preYear" id="preYear"><i class="icono-rewind"></i></button> 
-     <button type="button" value="preMonth" id="preMonth"><i class="icono-caretLeft"></i></button>
+      <input type="button" value="《" id="preYear">
+      <input type="button" value="〈" id="preMonth">
    </div>
    <div id="sel">
 		<div id="selDate"></div>
@@ -146,8 +147,8 @@
 		<div id="monthList"></div>
 	</div>
    <div id="next">
-      <button type="button" value="nextMonth" id="nextMonth"><i class="icono-caretRight"></i></button>
-     <button type="button" value="nextYear" id="nextYear"><i class="icono-forward"></i></button>
+      <input type="button" value="〉" id="nextMonth">
+      <input type="button" value="》" id="nextYear">
    </div>
 </div>
 <!--라이트 박스-->
@@ -181,23 +182,8 @@ style="border: 0; background: white; color: gray; font-size: 20px; float: right;
    start();
    
       
-//       function readTarget() {
-//          $.ajax({
-//             type:"get",
-//             url:"readTarget.json",
-//             data:{"date":date},
-//             success:function(data) {
-//                if(data == 0) {
-//                   var targetSales = prompt("이번달 목표 매출액");
-//                   alert(targetSales);
-//                   var targetCost = prompt("이번달 예상 비용");
-//                   alert(targetCost);
-//                }
-//             }
-//          });
-//       }
-
 function start() {
+	lightBoxController();
 	yearCount();
 	monthCount();
 	calendar();
@@ -218,12 +204,23 @@ function start() {
           $("#btnCancel").on("click", function() {
              hideLight();
           });
+          $("#darken-background").on("click", function() {
+        	  $("#darken-background").hide(); 
+          });
       });
 
-      $("#calendarView").on("click", "#calendar [name=wom]", function() {
-            date = $(this).find(".pleaseData").attr("id");
-            getData();
-         });
+//       $("#calendarView").on("click", "#calendar [name=wom]", function() {
+//             date = $(this).find(".pleaseData").attr("id");
+//             getData();
+//          });
+      
+    //매출,환불총액
+      $("#calendarView").on("click", "#calendar [name=wom] .pleaseData", function() {
+    	  date = $(this).attr("id");
+    	  setTimeout(getCostRefundList, 100);
+    	  setTimeout(getCategoryList, 150);
+    	  getData();
+      });
 
       
       
@@ -484,9 +481,8 @@ function start() {
       
       
       
-      //매출,환불총액
-      $("#calendarView").on("click", "#calendar [name=wom] .pleaseData", function() {
-         var date = $(this).attr("id");
+      
+      function getCostRefundList() {
          $.ajax({
             type:"get",
             url:"costrefundList.json",
@@ -499,15 +495,13 @@ function start() {
                      var data = google.visualization.arrayToDataTable(result); /* 데이터 셋팅 */
                      var options = {vAxis : {},
                            hAxis : {
-                              maxValue : 100000000,
-                              minValue : 0,
-                              ticks : ['0%','100%' ]
+                              minValue : 0
                                  },
                               series : {
                                  0 : {color : 'pink'},
                                  1 : {color : 'lightgray'},
                                  },
-                              bar : {groupWidth : '40%' // 그래프 너비 설정 %
+                              bar : {groupWidth : '30%' // 그래프 너비 설정 %
                                  // 그래프 너비 설정 %
                                  },
                               legend : 'none'
@@ -515,18 +509,13 @@ function start() {
                                  var chart = new google.visualization.BarChart(document.getElementById('frm1'));
                                  chart.draw(data,options); /* 차트 그리기 */
                   }
-                  
                }
-               getData();
                $("#frm1").html(changeChart());
-               
             }
-            
          });
-         
-      });
-      $("#calendarView").on("click", "#calendar [name=wom] .pleaseData", function() {
-         var date = $(this).attr("id");
+      }
+      
+    function getCategoryList() {
          $.ajax({
             type:"get",
             url:"categoryList.json",
@@ -539,9 +528,7 @@ function start() {
                      var data = google.visualization.arrayToDataTable(result); /* 데이터 셋팅 */
                      var options = {vAxis : {},
                            hAxis : {
-                              maxValue : 100000000,
-                              minValue : 0,
-                              ticks : ['0%','100%' ]
+                              minValue : 0
                                  },
                               series : {
                                  0 : {color : 'pink'},
@@ -556,16 +543,11 @@ function start() {
                                  var chart = new google.visualization.BarChart(document.getElementById('frm'));
                                  chart.draw(data,options); /* 차트 그리기 */
                   }
-                  
                }
-               getData();
                $("#frm").html(changeChart());
-               
             }
-            
          });
-         
-      });
+	}
          
       function getData() {
             var amount = 0;
@@ -683,58 +665,6 @@ function start() {
     	  });
       }
       
-//       function salesTotal() {
-//     	  var date = year +"/"+ month +"/"+ day;
-//          var amount = 0;
-//          $.ajax({
-//             type : "get",
-//             url : "GraphList.json",
-//             data : {
-//                "date" : date
-//             },
-//             success : function(data) {
-//                $(data).each(function() {
-//                   amount = amount + this.salesTotal;
-//                });
-//                salesTotal = amount;
-//             }
-//          });
-//       }
-//       function refundTotal() {
-//     	  var date = year +"/"+ month +"/"+ day;
-//          var amount = 0;
-//          $.ajax({
-//             type : "get",
-//             url : "GraphList.json",
-//             data : {
-//                "date" : date
-//             },
-//             success : function(data) {
-//                $(data).each(function() {
-//                   amount = amount + this.refundTotal;
-//                });
-//                refundTotal = amount;
-//             }
-//          });
-//       }
-//       function costTotal() {
-//     	 var date = year +"/"+ month +"/"+ day;
-//          var amount = 0;
-//          $.ajax({
-//             type : "get",
-//             url : "GraphList.json",
-//             data : {
-//                "date" : date
-//             },
-//             success : function(data) {
-//                $(data).each(function() {
-//                   amount = amount + this.costTotal;
-//                });
-//                costTotal = amount;
-//             }
-//          });
-//       }
-
       function calendar() {
     	  YM();
          var addCalendar = "<div id='calendar'>";

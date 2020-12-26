@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.DayVO;
 import com.example.mapper_oracle.TotalMapper;
-import com.example.service.DLService;
 
 @Controller
 public class TotalController {
@@ -21,57 +20,54 @@ public class TotalController {
 	@Autowired
 	TotalMapper mapper;
 	
-	@Autowired
-	DLService DLService;
-	
 	@RequestMapping("totalYearList.json")
 	@ResponseBody
 	public List<DayVO> totalYearListJson(HttpSession session) {
-		String companyCode = "";
-		return mapper.totalYearList();
+		String companyCode = (String) session.getAttribute("companyCode");
+		return mapper.totalYearList(companyCode);
 	}
 	
 	@RequestMapping("totalMonthList.json")
 	@ResponseBody
 	public List<DayVO> totalMonthListJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		return mapper.totalMonthList(year);
+		return mapper.totalMonthList(year, companyCode);
 	}
 	
 	@RequestMapping("salesMonthlyAmount.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> salesMonthlyAmountJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> sArray = mapper.salesMonthlyAmount(year);
+		List<HashMap<String, Object>> sArray = mapper.salesMonthlyAmount(year, companyCode);
 		return sArray;
 	}
 	
 	@RequestMapping("refundMonthlyAmount.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> refundMonthlyAmountJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		return mapper.refundMonthlyAmount(year);
+		return mapper.refundMonthlyAmount(year, companyCode);
 	}
 	
 	@RequestMapping("costMonthlyAmount.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> costMonthlyAmountJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		return mapper.costMonthlyAmount(year);
+		return mapper.costMonthlyAmount(year, companyCode);
 	}
 	
 	@RequestMapping("totalMonthlyAmount.json")
 	@ResponseBody
 	public List<ArrayList<Object>> totalMonthlyAmountJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> sArray = mapper.salesMonthlyAmount(year);
-		List<HashMap<String, Object>> rArray = mapper.refundMonthlyAmount(year);
-		List<HashMap<String, Object>> cArray = mapper.costMonthlyAmount(year);
+		List<HashMap<String, Object>> sArray = mapper.salesMonthlyAmount(year, companyCode);
+		List<HashMap<String, Object>> rArray = mapper.refundMonthlyAmount(year, companyCode);
+		List<HashMap<String, Object>> cArray = mapper.costMonthlyAmount(year, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -96,31 +92,31 @@ public class TotalController {
 	@RequestMapping("salesYearlyAmount.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> salesYearlyAmountJson(HttpSession session) {
-		String companyCode = "";
-		return mapper.salesYearlyAmount();
+		String companyCode = (String) session.getAttribute("companyCode");
+		return mapper.salesYearlyAmount(companyCode);
 	}
 	
 	@RequestMapping("refundYearlyAmount.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> refundYearlyAmountJson(HttpSession session) {
-		String  companyCode = "";
-		return mapper.refundYearlyAmount();
+		String companyCode = (String) session.getAttribute("companyCode");
+		return mapper.refundYearlyAmount(companyCode);
 	}
 	
 	@RequestMapping("costYearlyAmount.json")
 	@ResponseBody
 	public List<HashMap<String, Object>> costYearlyAmountJson(HttpSession session) {
-		String companyCode = "";
-		return mapper.costYearlyAmount();
+		String companyCode = (String) session.getAttribute("companyCode");
+		return mapper.costYearlyAmount(companyCode);
 	}
 	
 	@RequestMapping("totalYearlyAmount.json")
 	@ResponseBody
 	public List<ArrayList<Object>> totalYearlyAmounJson(HttpSession session) {
-		String companyCode = "";
-		List<HashMap<String, Object>> sArray = mapper.salesYearlyAmount();
-		List<HashMap<String, Object>> rArray = mapper.refundYearlyAmount();
-		List<HashMap<String, Object>> cArray = mapper.costYearlyAmount();
+		String companyCode = (String) session.getAttribute("companyCode");
+		List<HashMap<String, Object>> sArray = mapper.salesYearlyAmount(companyCode);
+		List<HashMap<String, Object>> rArray = mapper.refundYearlyAmount(companyCode);
+		List<HashMap<String, Object>> cArray = mapper.costYearlyAmount(companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -145,9 +141,9 @@ public class TotalController {
 	@RequestMapping("salesYearlyPayTypeList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> salesYearlyPayTypeListJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> sArray = mapper.salesYearlyPayTypeList(year);
+		List<HashMap<String, Object>> sArray = mapper.salesYearlyPayTypeList(year, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -169,9 +165,9 @@ public class TotalController {
 	@RequestMapping("refundYearlyPayTypeList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> refundYearlyPayTypeListJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> rArray = mapper.refundYearlyPayTypeList(year);
+		List<HashMap<String, Object>> rArray = mapper.refundYearlyPayTypeList(year, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -192,9 +188,9 @@ public class TotalController {
 	@RequestMapping("salesMonthlyPayTypeList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> salesMonthlyPayTypeListJson(String year, String month, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> array = mapper.salesMonthlyPayTypeList(year, month);
+		List<HashMap<String, Object>> array = mapper.salesMonthlyPayTypeList(year, month, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -215,9 +211,9 @@ public class TotalController {
 	@RequestMapping("refundMonthlyPayTypeList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> refundMonthlyPayTypeListJson(String year, String month, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> array = mapper.refundMonthlyPayTypeList(year, month);
+		List<HashMap<String, Object>> array = mapper.refundMonthlyPayTypeList(year, month, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -238,9 +234,9 @@ public class TotalController {
 	@RequestMapping("salesYearlyCategoryList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> salesYearlyCategoryListJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> array = mapper.salesYearlyCategoryList(year);
+		List<HashMap<String, Object>> array = mapper.salesYearlyCategoryList(year, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -261,9 +257,9 @@ public class TotalController {
 	@RequestMapping("refundYearlyCategoryList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> refundYearlyCategoryListJson(String year, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		year = year.substring(2);
-		List<HashMap<String, Object>> array = mapper.refundYearlyCategoryList(year);
+		List<HashMap<String, Object>> array = mapper.refundYearlyCategoryList(year, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -284,9 +280,9 @@ public class TotalController {
 	@RequestMapping("refundMonthlyCategoryList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> refundMonthlyCategoryListJson(String date, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		date = date.substring(2);
-		List<HashMap<String, Object>> array = mapper.refundMonthlyCategoryList(date);
+		List<HashMap<String, Object>> array = mapper.refundMonthlyCategoryList(date, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();
@@ -308,7 +304,7 @@ public class TotalController {
 	@ResponseBody
 	public List<ArrayList<Object>> depositYearlyBalanceJsonJson(String year, HttpSession session) {
 		year = year.substring(2);
-		String companyCode = "347-88-00867";
+		String companyCode = (String) session.getAttribute("companyCode");
 		List<HashMap<String, Object>> dArray = mapper.depositMonthlyBalance(year, companyCode);
 		List<HashMap<String, Object>> lArray = mapper.loansMonthlyBalance(year, companyCode);
 		
@@ -333,9 +329,9 @@ public class TotalController {
 	@RequestMapping("salesMonthlyCategoryList.json")
 	@ResponseBody
 	public List<ArrayList<Object>> salesMonthlyCategoryListJson(String date, HttpSession session) {
-		String companyCode = "";
+		String companyCode = (String) session.getAttribute("companyCode");
 		date = date.substring(2);
-		List<HashMap<String, Object>> array = mapper.salesMonthlyCategoryList(date);
+		List<HashMap<String, Object>> array = mapper.salesMonthlyCategoryList(date, companyCode);
 		
 		List<ArrayList<Object>> listArr = new ArrayList<>();
 		ArrayList<Object> arr = new ArrayList<>();

@@ -24,7 +24,7 @@
 }
 
 #total_chart {
-   margin-left: 90px;
+   margin-left: 50px;
    margin-top: 250px;
 }
 
@@ -56,8 +56,8 @@
 }
 
 #divCenter {
-   width: 1450px;
-   height: 1000px;
+   width: 1500px;
+   height: 800px;
    margin-left: 200px;
 }
 
@@ -85,13 +85,13 @@ select {
    text-align: center;
 }
 
-table {
+table #Desposit, table #Loans{
    width: 1300px;
    border: 0;
    margin-top:30px;
 }
 
-td {
+.dtd, .ltd {
    width: 1300px;
    height: 30px;
    text-align: center;
@@ -101,63 +101,37 @@ span {
    color: black;
 }
 
-#logout {
-   margin-left: 30px;
-}
-
-#total {
-   margin-top: 30px;
-   margin-left: 20px;
-   width: 100px;
-   padding: .4em .1em;
-   font-size: 15px;
-   -webkit-appearance: button;
-   -moz-appearance: button;
-   appearance: button;
-   border: 1px solid #597484;
-   border-radius: 5px;
-   text-align: center;
-   background-color: white;
-   cursor: pointer;
-}
-
-#total:active {
-   transform: translateY(4px);
-}
    *:focus { outline: none; }
 
 </style>
 </head>
 
 <body>
-
+      <jsp:include page="menu.jsp"></jsp:include>
     <div id="divTop"></div>
     <div id="divCenter">
 
-   <div id = "total_chart" style="width:1300px; height:250px;"></div>
+   <div id = "total_chart" style="width:1500px; height:300px;"></div>
    <div id="sel">
       <div id="selYear"></div>
       <div id="selMonth"></div>
       </div>   
  
-      <input type = "button" id = "total" value = "통계" onClick="location.href='total'">
-
    <div id = "Desposit">
       <table border = 1 style = "border-collapse:collapse; float:left;">
          <tr>
             <td colspan ="4">예금<input type = "button" value = "그래프" id = "btDeposit"></td>
          </tr>
          <tr>
-            <td style="background-color:#EAEAEA">은행명</td>
-            <td style="background-color:#EAEAEA">계좌번호</td>
-            <td style="color:red; background-color:#EAEAEA;">통장잔액</td>
-            <td style="background-color:#EAEAEA">이율</td>
+            <td class="dtd" style="background-color:#EAEAEA">은행명</td>
+            <td class="dtd" style="background-color:#EAEAEA">계좌번호</td>
+            <td class="dtd" style="color:red; background-color:#EAEAEA;">통장잔액</td>
+            <td class="dtd" style="background-color:#EAEAEA">이율</td>
          </tr>
          <c:forEach items = "${Dlist}" var = "vo">
             <tr>
                <td>${vo.depositAccountBankName}</td>
-               <td>${vo.depositAccountCode}</td>
-               <td style="color:red;"><fmt:formatNumber value="${vo.depositBalance}" pattern="#,###"/>원</td>
+               <td><a onclick = "window.open('depositassets?depositAccountCode=${vo.depositAccountCode}','예금계좌내역', 'width=700, height=600');">${vo.depositAccountCode}</a></td>               <td style="color:red;"><fmt:formatNumber value="${vo.depositBalance}" pattern="#,###"/>원</td>
                <td>${vo.depositAccountRate}%</td>
             </tr>
          </c:forEach>
@@ -169,20 +143,19 @@ span {
             <td colspan = "8">대출<input type ="button" value = "그래프" id ="btLoans"></td>
          </tr>
          <tr>
-            <td style="background-color:#EAEAEA">은행명</td>
-            <td style="background-color:#EAEAEA">계좌 번호</td>
-            <td style="background-color:#EAEAEA">시작일</td>
-            <td style="background-color:#EAEAEA">만료일</td>
-            <td style="background-color:#EAEAEA">이율</td>
-            <td style="color:red; background-color:#EAEAEA;">대출원금</td>
-            <td style="background-color:#EAEAEA">상환금액</td>
-            <td style="color:red; background-color:#EAEAEA;">대출잔액</td>
+            <td class="ltd" style="background-color:#EAEAEA">은행명</td>
+            <td class="ltd" style="background-color:#EAEAEA">계좌 번호</td>
+            <td class="ltd" style="background-color:#EAEAEA">시작일</td>
+            <td class="ltd" style="background-color:#EAEAEA">만료일</td>
+            <td class="ltd" style="background-color:#EAEAEA">이율</td>
+            <td class="ltd" style="color:red; background-color:#EAEAEA;">대출원금</td>
+            <td class="ltd" style="background-color:#EAEAEA">상환금액</td>
+            <td class="ltd" style="color:red; background-color:#EAEAEA;">대출잔액</td>
          </tr>
          <c:forEach items = "${Llist}" var = "vo">
             <tr>
                <td>${vo.loansAccountBankName}</td>
-               <td>${vo.loansAccountCode}</td>
-               <td>${vo.loansAccount_startDay.substring(0,11)}</td>
+               <td><a onclick = "window.open('loansassets?loansAccountCode=${vo.loansAccountCode}','대출계좌내역', 'width=700, height=600');">${vo.loansAccountCode}</a></td>               <td>${vo.loansAccount_startDay.substring(0,11)}</td>
                <td>${vo.loansAccount_endDay.substring(0,11)}</td>
                <td>${vo.loansAccountRate}%</td>
                <td style="color:red;"><fmt:formatNumber value="${vo.loansAccountAmount}" pattern="#,###"/>원</td>
@@ -193,7 +166,6 @@ span {
       </table>
    </div>
    </div>
-   <jsp:include page="menu.jsp"></jsp:include>
    <div id="footer"><jsp:include page="footer.jsp" /></div>
 </body>
 <script>
@@ -282,31 +254,32 @@ var date = year +"/"+ month;
          });
       }
 
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-//        var date = year + "/" + month;
-//       alert(date);
-       
-         $.ajax({
-           type : "get",
-           url : "total.json",
-           data : {"date":date},
-           success:function(result){
-              
-              var options = {
-            		  hAxis : {
-           				minValue : 0
-           			},
-                   title: '예금 & 대출 총액 퍼센트',
-                   chartArea : {width:'90%', height:'80%'}
-                };
-              var data = google.visualization.arrayToDataTable(result);
-                 var chart = new google.visualization.BarChart(document.getElementById('total_chart'));
-                chart.draw(data, options);
-           }
-      });
-   }
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+//          var date = year + "/" + month;
+//         alert(date);
+         
+           $.ajax({
+             type : "get",
+             url : "total.json",
+//              data : {"date":date},
+             success:function(result){
+                
+                var options = {
+                     title: '예금 & 대출 총액',
+                     chartArea : {width:'80%', height:'80%'},
+                     hAxis : {
+                         minValue : 0
+                      },
+                     
+                  };
+                var data = google.visualization.arrayToDataTable(result);
+                   var chart = new google.visualization.BarChart(document.getElementById('total_chart'));
+                  chart.draw(data, options);
+             }
+        });
+     }
 </script>
 <script>   
    $("#btDeposit").on('click', function(){

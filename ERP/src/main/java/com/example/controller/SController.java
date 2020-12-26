@@ -83,7 +83,7 @@ public class SController {
          listArr.add(arr);
          
          arr = new ArrayList<>();
-         arr.add("");
+         arr.add("합계");
          arr.add(sMap.get("SALESTOTAL"));
          arr.add(rMap.get("REFUNDTOTAL"));
          listArr.add(arr);
@@ -113,7 +113,7 @@ public class SController {
       listArr.add(arr);
       
       arr = new ArrayList<>();
-      arr.add("date");
+      arr.add(" ");
       arr.add(sMap.get("SALESTOTAL"));
       arr.add(rMap.get("REFUNDTOTAL"));
       arr.add(cMap.get("COSTTOTAL"));
@@ -211,6 +211,9 @@ public class SController {
                scnt++;
             }
          }
+         if(scnt==0) {
+             arr.add(0);
+          }
          
          for(int rc = 0; rc < rcArray.size(); rc++) {
             String RLC = (String) rcArray.get(rc).get("LCATEGORY");
@@ -219,13 +222,9 @@ public class SController {
                rcnt++;
             }
          }
-         
-         if(scnt==0) {
-            arr.add(0);
-         }
          if(rcnt==0) {
-            arr.add(0);
-         }
+             arr.add(0);
+          }
          
          if(arr.size() > 1) {
             listArr.add(arr);    
@@ -304,27 +303,11 @@ public class SController {
  		int amount = 0;
  		date = date.substring(2);
  		String companyCode=(String) session.getAttribute("companyCode");
- 		int costAmount =cMapper.monthlyCostListMain(date);
+ 		int costAmount =cMapper.monthlyCostListMain(date, companyCode);
  		int salesAmount = sMapper.salesAmount(date, companyCode);
  		int refundAmount = sMapper.refundAmount(date, companyCode);
  		amount = costAmount + salesAmount + refundAmount;
  		amount = amount/6;
-// 		if(salesAmount <= refundAmount) {
-// 			if(refundAmount <= costAmount) {
-// 				amount = costAmount;
-// 			}
-// 			if(refundAmount >= costAmount) {
-// 				amount = refundAmount;
-// 			}
-// 		}
-// 		if(salesAmount >= refundAmount) {
-// 			if(salesAmount <= costAmount) {
-// 				amount = costAmount;
-// 			}
-// 			if(salesAmount >= costAmount) {
-// 				amount = salesAmount;
-// 			}
-// 		}
  		return amount;
  	}
    

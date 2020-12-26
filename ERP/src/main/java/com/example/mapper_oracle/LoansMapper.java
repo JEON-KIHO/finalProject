@@ -1,7 +1,5 @@
-
 package com.example.mapper_oracle;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,9 +13,17 @@ public interface LoansMapper {
    
    public List<HashMap<String, Object>> loanspercent(String companyCode);
    
-   public List<HashMap<String, Object>> loansTotal(@Param("companyCode")String companyCode, @Param("date")String date);
+   public List<HashMap<String, Object>> loansTotal(String companyCode);
+
+   public LoansVO loansassets(String loansAccountCode);
    
-   public List<HashMap<String, Object>> loansAccountList();
-	public Date loansMaxDayList(String code);
-	public int loansBalanceList(@Param("code") String code, @Param("date") Date date);
+   public List<LoansVO> loansassetsread(@Param("loansAccountCode")String loansAccountCode, @Param("date")String date);
+   
+   public List<Integer> LOYearList(@Param("loansAccountCode")String loansAccountCode, @Param("companyCode")String companyCode);
+     
+   public List<Integer> LOMonthList(@Param("year") String year, @Param("companyCode") String companyCode, @Param("loansAccountCode")String loansAccountCode);
+   
+   public List<HashMap<String, Object>> LOdailyYearList(@Param("loansAccountCode")String loansAccountCode, @Param("companyCode")String companyCode);
+    
+   public List<HashMap<String, Object>> LOdailyMonthList(@Param("year") String year, @Param("companyCode") String companyCode, @Param("loansAccountCode")String loansAccountCode);
 }
