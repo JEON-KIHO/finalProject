@@ -1,0 +1,9 @@
+package com.example.controller;
+
+@Controller
+public class ThisMonthAmountController {
+
+	@RequestMapping("thisMonthAmount")
+	public void thisMonthAmount() {
+	}
+}

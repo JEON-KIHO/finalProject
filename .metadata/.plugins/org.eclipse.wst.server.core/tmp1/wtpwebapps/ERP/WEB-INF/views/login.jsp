@@ -223,16 +223,16 @@ h2 {
          <tr>
             <td width=100 style="font-size:30px;">ID</td>
             <td width=200><input type="text" name="adminId" style="border:none; width:300px; height:50px;
-             border-bottom:1px solid gray;font-size:20px;" placeholder="아이디 입력"></td>
+             border-bottom:1px solid gray;font-size:20px;" placeholder="아이디 입력" id="id"></td>
          </tr>
          <tr>
-            <td width=100 style="font-size:30px">Password</td>
+            <td width=100 style="font-size:30px">PASSWORD</td>
             <td width=200><input type="password" name="adminPassword" style="border:none; height:50px;
              width:300px; border-bottom:1px solid gray; font-size:20px;" placeholder="비밀번호 입력"></td>
          </tr>
          <tr>
          <td colspan=2>
-             <input type="checkbox" name="chkLogin"  style="margin-left:360px; margin-bottom:50px; float:left;">Keep Login<br/>
+<!--              <input type="checkbox" name="chkLogin"  style="margin-left:360px; margin-bottom:50px; float:left;">Keep Login<br/> -->
             
             <input type="submit" id="mainlogin" value="Login" style="margin-left:20px; font-size:30px;"
             ></td>
@@ -245,12 +245,14 @@ h2 {
  </div>
 </body>
 <script>
+
    $("#btnCancell").on("click",function(){
       location.href = "login";
       
    });
    function showLogin(){
       $("#darken-background").show();
+      $("#id").focus();
    }
 
    $(frm).submit(function(e) {

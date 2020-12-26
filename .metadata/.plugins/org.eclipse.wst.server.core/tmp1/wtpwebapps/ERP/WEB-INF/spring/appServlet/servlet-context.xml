@@ -33,4 +33,16 @@
 	<context:component-scan base-package="com.example.controller" />
 	<context:component-scan base-package="com.example.service" />
 	
+	
+	<interceptors>
+         <interceptor>
+                  <mapping path="/main" />
+                  <mapping path="/salesList" />
+                  <mapping path="/cost" />
+                  <mapping path="/assets" />
+                  <mapping path="/total" />
+                  <beans:bean class="com.example.interceptor.AuthInterceptor" />
+         </interceptor>
+	</interceptors>
+	
 </beans:beans>

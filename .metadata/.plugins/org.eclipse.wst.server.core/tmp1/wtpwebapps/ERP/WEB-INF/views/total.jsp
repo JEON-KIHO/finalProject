@@ -8,6 +8,8 @@
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<link rel="stylesheet" href="../resources/style.css">
+<link rel="stylesheet" href="../resources/icono.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%
 	GregorianCalendar cal = new GregorianCalendar();
@@ -27,7 +29,20 @@
    .sel, .selPayType {float:left;}
    #divCenter {width: 1600px; height:1000px; margin-top: 150px; margin-left: 200px; margin-bottom:100px;}
    span {color:black;}
-   #logout{margin-left:30px;}
+   
+      select {
+  width: 60px;
+  padding: .8em .5em;
+  font-family: inherit;
+  font-size:13px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align:center;
+  }
+  *:focus { outline: none; }
 </style>
 </head>
 <body>
@@ -40,6 +55,8 @@
             <option value="매출" selected>매출</option>
             <option value="환불">환불</option>
          </select>
+         <input type="hidden" id="btnYear">
+         <input type="hidden" id="btnMonth">
       </div>
    </div>
    <div id="yearlyAmountChart"></div>
@@ -71,9 +88,9 @@
 </body>
 <script type="text/javascript">
 // var Array = ['매출', '환불', '비용'];
-var year = <%=thisYear%>-1;
-var month = <%=thisMonth%>;
-
+let year = <%=thisYear%>;
+let month = <%=thisMonth%>;
+let date = year+"/"+month;
 var yearlyPayTypeURL = "salesYearlyPayTypeList.json";
 var monthlyPayTypeURL = "salesMonthlyPayTypeList.json";
 var yearlyCategoryURL = "salesYearlyCategoryList.json";
@@ -84,14 +101,32 @@ var yearlyCategoryTitle = "연간 상품별 매출";
 var monthlyCategoryTitle = "월간 상품별 매출";
 
 getYear();
-getMonth();
-yearlyAmountChart();
-monthlyAmountChart();
-yearlyPayTypeChart();
-monthlyPayTypeChart();
-yearlyCategoryChart();
-monthlyCategoryChart();
-totalYearlyBalance();
+
+yearStart();
+monthStart();
+lightBox();
+setTimeout(outLightBox, 700);
+// yearlyAmountChart();
+// monthlyAmountChart();
+// yearlyPayTypeChart();
+// monthlyPayTypeChart();
+// yearlyCategoryChart();
+// monthlyCategoryChart();
+// totalYearlyBalance();
+
+function yearStart() {
+	yearlyAmountChart();
+	yearlyPayTypeChart();
+	yearlyCategoryChart();
+	totalYearlyBalance();
+}
+
+function monthStart() {
+	month = $("#btnMonth").val();
+	monthlyAmountChart();
+	monthlyPayTypeChart();
+	monthlyCategoryChart();
+}
 
 $("#yearlyPayType").on("change", function() {
 	if($(this).val() == "매출") {
@@ -137,6 +172,7 @@ $("#monthlyPayType").on("change", function() {
 
 $("#selYear").on("change", "#year", function() {
 	year = $(this).val();
+	getMonth();
 	yearlyPayTypeChart();
 	yearlyCategoryChart();
 	totalYearlyBalance();
@@ -217,7 +253,7 @@ function yearlyCategoryChart() {
 }
 
 function monthlyCategoryChart() {
-	var date = year +"/"+ month;
+	date = year +"/"+ month;
 	google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawVisualization);
    		function drawVisualization() {
@@ -414,7 +450,9 @@ function getYear() {
 			});
 			yearOption += "</select>";
 			$("#selYear").html(yearOption);
-			$("#selYear").find("#year").val(<%=thisYear%>-1).prop("selected", true);
+			$("#selYear").find("#year").val(y).prop("selected", true);
+			$("#btnYear").val(y);
+			getMonth();
 		}
 	});
 }
@@ -440,7 +478,10 @@ function getMonth() {
 			});
 			monthOption += "</select>";
 			$("#selMonth").html(monthOption);
-			$("#selMonth").find("#month").val(<%=thisMonth%>).prop("selected", true);
+			$("#selMonth").find("#month").val(m).prop("selected", true);
+			$("#btnMonth").val(m);
+			Month = m;
+			monthStart();
 		}
 	});
 }

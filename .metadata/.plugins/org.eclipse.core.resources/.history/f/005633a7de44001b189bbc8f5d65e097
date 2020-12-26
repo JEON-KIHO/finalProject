@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper_oracle.DepositMapper">
+<select id="depositAccountList" resultType="hashmap">
+	select depositAccountcode from depositView group by depositAccountCode
+</select>
+
+<select id="depositMaxDayList" resultType="Date">
+	select max(day) day from depositView where depositAccountCode = #{code}
+</select>
+
+<select id="depositBalanceList" resultType="Integer">
+	select endBalance from depositView where depositAccountCode = #{code} and day = #{date}
+</select>
+
+ <select id = "Dlist" resultType="com.example.domain.DepositVO">
+   select * from depositView_bomi where(depositAccountCode, deposit_day) in(select depositAccountCode, max(deposit_day) from depositView_bomi where deposit_companyCode = #{companyCode} group by depositAccountCode)
+    order by deposit_day
+   </select>
+   
+   <select id = "depositpercent" resultType = "hashmap">
+      select depositAccountCode, depositAccountBankName, sum(depositBalance) depositPercent from (select * from depositView_bomi where(depositAccountCode, deposit_day) in(select depositAccountCode, max(deposit_day) 
+      from depositView_bomi where deposit_companyCode = #{companyCode} group by depositAccountCode) order by deposit_day) group by depositAccountCode, depositAccountBankName
+   </select>
+   
+   <select id = "depositTotal" resultType = "hashmap">
+      select sum(endBalance) endBalance, max(day) from depositView where (depositAccountCode, day) in (select depositAccountCode, max(day) day 
+      from depositView  where companyCode = #{companyCode} and day like #{date} || '%' group by depositAccountcode)
+   </select>
+   
+   <select id="dailyYearList" resultType="com.example.domain.DayVO">
+        select * from day order by day
+   </select>
+
+   <select id="dailyMonthList" resultType="com.example.domain.DayVO">
+         select * from day where day like #{date} || '%' order by day
+   </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+package com.example.mapper_oracle;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+public interface ThisMonthTotalController {
+   
+   public List<HashMap<String, Object>> cost(@Param("companyCode")String companyCode, @Param("date")String date);
+   public List<HashMap<String, Object>> sales(@Param("companyCode")String companyCode, @Param("date")String date);
+   public List<HashMap<String, Object>> refund(@Param("companyCode")String companyCode, @Param("date")String date);
+   public List<HashMap<String, Object>> deposit(@Param("companyCode")String companyCode, @Param("date")String date);
+   public List<HashMap<String, Object>> loans(@Param("companyCode")String companyCode, @Param("date")String date);
+   public List<HashMap<String, Object>> target(@Param("companyCode")String companyCode, @Param("date")String date);
+}

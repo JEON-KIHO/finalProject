@@ -10,12 +10,12 @@
 		<list key="findhistory">
 			<item value="frm"/>
 			<item value="detail"/>
-			<item value="costList"/>
-			<item value="monthly"/>
-			<item value="updateData"/>
+			<item value="lightBox"/>
+			<item value="max"/>
+			<item value="maxValue"/>
+			<item value="divCenter"/>
+			<item value="Array"/>
 			<item value="alert"/>
-			<item value="GraphList"/>
-			<item value="costTotal"/>
 		</list>
 		<list key="replacehistory">
 		</list>

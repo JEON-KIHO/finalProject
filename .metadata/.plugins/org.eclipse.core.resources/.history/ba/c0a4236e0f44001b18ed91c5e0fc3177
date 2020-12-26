@@ -1,0 +1,88 @@
+package com.example.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.mapper_oracle.TotalMapper;
+
+@Controller
+public class ThisMonthTotalController {
+   
+   @Autowired
+   TotalMapper mapper;
+   
+      
+      @RequestMapping("total")
+      public void total(){
+         
+      }
+   
+      @RequestMapping("csrTotal.json")
+      @ResponseBody
+      public List<ArrayList<Object>> costJson(String date) {
+         date = date.substring(2);
+         String companyCode = "347-88-00867";
+         List<HashMap<String, Object>> cArray = mapper.cost(companyCode, date);
+         List<HashMap<String, Object>> sArray = mapper.sales(companyCode, date);
+         List<HashMap<String, Object>> rArray = mapper.refund(companyCode, date);
+         
+         List<ArrayList<Object>> listArr = new ArrayList<>(); 
+         ArrayList<Object> arr = new ArrayList<>();
+         arr.add("날짜");
+         arr.add("비용합계");
+         arr.add("매출합계");
+         arr.add("환불합계");
+         listArr.add(arr);
+         
+         for(int i =0; i<cArray.size(); i++){
+            arr = new ArrayList<>();
+            arr.add(date);
+            arr.add(cArray.get(i).get("CA"));
+            arr.add(sArray.get(i).get("SA"));
+            arr.add(rArray.get(i).get("RA"));
+            listArr.add(arr);
+         }
+      return listArr;
+   }
+      
+      @RequestMapping("deloTotal.json")
+      @ResponseBody
+      public List<ArrayList<Object>> depositJson(String date) {
+         date = date.substring(2);
+         String companyCode = "347-88-00867";
+         List<HashMap<String, Object>> dArray = mapper.deposit(companyCode, date);
+         List<HashMap<String, Object>> lArray = mapper.loans(companyCode, date);
+         
+         List<ArrayList<Object>> listArr = new ArrayList<>(); 
+         ArrayList<Object> arr = new ArrayList<>();
+         arr.add("날짜");
+         arr.add("예금잔액");
+         arr.add("대출잔액");
+         listArr.add(arr);
+         
+         for(int i =0; i<dArray.size(); i++){
+            arr = new ArrayList<>();
+            arr.add(date);
+            arr.add(dArray.get(i).get("DEPOSITBALANCE"));
+            arr.add(lArray.get(i).get("LOANSBALANCE"));
+            listArr.add(arr);
+         }
+      return listArr;
+   }
+      
+      @RequestMapping("target.json")
+      @ResponseBody
+      public List<HashMap<String, Object>> targetJson(String date) {
+         date = date.substring(2);
+         String companyCode = "347-88-00867"; 
+         List<HashMap<String, Object>> array = mapper.target(companyCode, date);
+      return array;
+   }
+      
+}
