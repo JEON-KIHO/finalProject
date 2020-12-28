@@ -45,14 +45,14 @@ body {
 .button {
    background-color: rgba(300, 300, 300, 0.0);
    border: none;
-   padding: 40px;
+   padding: 0px;
    cursor: pointer;
    display: block;
    position: relative;
    overflow: hidden;
-   transition: all .35s ease-in-out .35s;
+   transition-duration: 0.5s;
    margin-top: 300px;
-   width: 200px;
+   width: 300px;
    text-align: center;
 }
 
@@ -78,21 +78,17 @@ body {
    color: #444;
 }
 
-h2 {
+h1 {
    font-family:"굴림";
    background-color: rgba(300, 300, 300, 0.0);
    display: block;
    padding: 15px 30px;
    z-index: 100;
    position: relative;
-   transition: all .35s ease-in-out .35s;
+   transition-duration: 0.5s;
 }
 
-.button:hover h2 {
-   background: #36B4C7;
-   color: #fff;
-   transition: all .35s ease-in-out .35s;
-}
+
 
 .button:after {
    bottom: -100%;
@@ -101,14 +97,14 @@ h2 {
    width: 100%;
    height: 100%;
    position: absolute;
-   background: #36B4C7;
-   transition: all .35s ease-in-out .5s;
+   background: #ff4164;
+   transition-duration: 0.5s;
 }
 
 .button:hover:after {
    right: 0;
    bottom: 0;
-   transition: all ease-in-out .35s;
+   transition-duration: 0.5s;
 }
 
 .button:before {
@@ -118,14 +114,14 @@ h2 {
    width: 100%;
    height: 100%;
    position: absolute;
-   background: #36B4C7;
-   transition: all .35s ease-in-out .5s;
+   background: #ff4164;
+   transition-duration: 0.5s;
 }
 
 .button:hover:before {
    left: 0;
    top: 0;
-   transition: all ease-in-out .35s;
+   transition-duration: 0.5s;
 }
 
 #darken-background {
@@ -159,7 +155,7 @@ h2 {
  #frm{border:1px solid #F1F3F2;}
  td{padding:20px 10px 10px 15px;}
    
-   #mainlogin {
+#mainlogin {
   width: 500px;
   height: 80px;
   margin-top:30px;
@@ -197,7 +193,7 @@ h2 {
    <div class="light-button button-wrapper">
       <div class="button" onclick="location.href='company'">
 
-         <h2 style="color: white; text-align:center;">Registration</h2>
+         <h1 style="color: white; text-align:center;">Registration</h1>
       </div>
 
    </div>
@@ -205,10 +201,10 @@ h2 {
    <div class="light-button button-wrapper">
       <div class="button" onclick="showLogin();">
 
-         <h2 style="color: white; text-align: center;">
+         <h1 style="color: white; text-align: center;">
 
             Login 
-         </h2>
+         </h1>
       </div>
 
    </div>

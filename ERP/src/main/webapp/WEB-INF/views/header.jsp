@@ -69,12 +69,13 @@ img {
    height: 120px;
 }
 
-   #thisMonthList {text-align:center; font-size:14px; height:100px; z-index:11111111111111;
+      #thisMonthList {text-align:center; font-size:14px; height:100px; z-index:11111111111111;
    color:black; float:right; margin-right:80px; margin-top:10px;}
    .type {width:100px;}
    .amount {width:120px;}
    .rate {width:100px;}
    .lastRate {width:100px;}
+   #thisMonthList td {border-bottom:1px solid #ccc; color:#669;} 
    #mlist{margin-bottom:200px; width:600px; height:100px; float:right;}
 </style>
 </head>
