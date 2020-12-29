@@ -142,9 +142,11 @@
 	</list>
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
-		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\owner\Desktop\1227\final2"/>
+			<item value="C:\Users\owner\Desktop\final2\final2"/>
 			<item value="D:\spring\sss"/>
 			<item value="C:\Users\owner\Desktop\222\sss"/>
 			<item value="C:\Users\owner\Desktop\zip\sss"/>
