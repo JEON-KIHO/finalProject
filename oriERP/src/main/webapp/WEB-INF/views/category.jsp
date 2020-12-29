@@ -46,7 +46,7 @@
 </head>
    
 <body>
-<jsp:include page="menu.jsp"></jsp:include>
+<jsp:include page="header1.jsp"></jsp:include>
    <div class="tabbed round">
          <ul>
             <li id="menu4">대출 입력</li>
@@ -110,30 +110,30 @@
       <tbody>
       <tr class="depositaccount">
          <td >1</td>
-         <td width=100 class="bankname"><input type="text" size=10 class="depositaccountbankname" ></td>
-         <td width=150 class="code"><input type="text" size=20 class="depositaccountcode"></td>
+         <td width=100 class="bankname"><input type="text" size=10 class="depositaccountbankname" style="ime-mode:active;"></td>
+         <td width=150 class="code"><input type="text" size=20 class="depositaccountcode" Only="true"></td>
          <td width=150 class="name"><input type="text" size=10 class="depositaccountname" ></td>
-         <td width=50 class="rate"><input type="text" size=5 class="depositaccountrate" ></td>
-         <td width=80 class="start"><input type="text" size=15 class="depositaccountstart" placeholder="yyyy/mm/dd"></td>
-         <td width=80 class="amount"><input type="text" size=15 class="depositaccrountamount"></td>
+         <td width=50 class="rate"><input type="text" size=5 class="depositaccountrate" dotOnly="true">%</td>
+         <td width=80 class="start"><input type="text" size=15 class="depositaccountstart" placeholder="yyyy-mm-dd" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
+         <td width=80 class="amount"><input type="text" size=15 class="depositaccrountamount" onkeyup="numberinput(this);">원</td>
       </tr>
       <tr class="depositaccount">
          <td >2</td>
          <td width=100 class="bankname"><input type="text" size=10 class="depositaccountbankname"></td>
-         <td width=250 class="code"><input type="text" size=20 class="depositaccountcode"></td>
+         <td width=250 class="code"><input type="text" size=20 class="depositaccountcode" Only="true"></td>
          <td width=150 class="name"><input type="text" size=10 class="depositaccountname" ></td>
-         <td width=50 class="rate"><input type="text" size=5 class="depositaccountrate" ></td>
-         <td width=80 class="start"><input type="text" size=15 class="depositaccountstart"></td>
-         <td width=80 class="amount"><input type="text" size=15 class="depositaccrountamount"></td>
+         <td width=50 class="rate"><input type="text" size=5 class="depositaccountrate" dotOnly="true">%</td>
+         <td width=80 class="start"><input type="text" size=15 class="depositaccountstart" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
+         <td width=80 class="amount"><input type="text" size=15 class="depositaccrountamount" onkeyup="numberinput(this);">원</td>
       </tr>
       <tr class="depositaccount">
          <td >3</td>
          <td width=100 class="bankname"><input type="text" size=10 class="depositaccountbankname"></td>
-         <td width=250 class="code"><input type="text" size=20 class="depositaccountcode"></td>
+         <td width=250 class="code"><input type="text" size=20 class="depositaccountcode" Only="true"></td>
          <td width=150 class="name"><input type="text" size=10 class="depositaccountname" ></td>
-         <td width=50 class="rate"><input type="text" size=5 class="depositaccountrate" ></td>
-         <td width=80 class="start"><input type="text" size=15 class="depositaccountstart"></td>
-         <td width=80 class="amount"><input type="text" size=15 class="depositaccrountamount"></td>
+         <td width=50 class="rate"><input type="text" size=5 class="depositaccountrate" dotOnly="true">%</td>
+         <td width=80 class="start"><input type="text" size=15 class="depositaccountstart" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
+         <td width=80 class="amount"><input type="text" size=15 class="depositaccrountamount" onkeyup="numberinput(this);">원</td>
       </tr>
       </tbody> 
    </table>
@@ -160,32 +160,32 @@
       <tr class="loansaccount">
          <td >1</td>
          <td width=100 class="bankname"><input type="text" size=10 class="loansbankname"></td>
-         <td width=300 class="code"><input type="text" size=10 class="loanscode"></td>
+         <td width=300 class="code"><input type="text" size=10 class="loanscode" Only="true"></td>
          <td width=200 class="name"><input type="text" size=10 class="loansname" ></td>
-         <td width=50 class="rate"><input type="text" size=3 class="loansrate" ></td>
-         <td width=100 class="amount"><input type="text" size=10 class="loansamount" ></td>
-         <td width=100 class="start"><input type="text" size=15 class="loansstart" placeholder="yyyy/mm/dd"></td>
-         <td width=100 class="end"><input type="text" size=15 class="loansend" placeholder="yyyy/mm/dd"></td>
+         <td width=50 class="rate"><input type="text" size=3 class="loansrate" dotOnly="true" >%</td>
+         <td width=100 class="amount"><input type="text" size=10 class="loansamount" onkeyup="numberinput(this);">원</td>
+         <td width=100 class="start"><input type="text" size=15 class="loansstart" placeholder="yyyy-mm-dd" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
+         <td width=100 class="end"><input type="text" size=15 class="loansend" placeholder="yyyy-mm-dd" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
       </tr>
       <tr class="loansaccount">
          <td >2</td>
          <td width=100 class="bankname"><input type="text" size=10 class="loansbankname"></td>
-         <td width=300 class="code"><input type="text" size=10 class="loanscode"></td>
+         <td width=300 class="code"><input type="text" size=10 class="loanscode" Only="true"></td>
          <td width=200 class="name"><input type="text" size=10 class="loansname" ></td>
-         <td width=50 class="rate"><input type="text" size=3 class="loansrate" ></td>
-         <td width=100 class="amount"><input type="text" size=10 class="loansamount" ></td>
-         <td width=100 class="start"><input type="text" size=15 class="loansstart"></td>
-         <td width=100 class="end"><input type="text" size=15 class="loansend"></td>
+         <td width=50 class="rate"><input type="text" size=3 class="loansrate" dotOnly="true" >%</td>
+         <td width=100 class="amount"><input type="text" size=10 class="loansamount" onkeyup="numberinput(this);">원</td>
+         <td width=100 class="start"><input type="text" size=15 class="loansstart" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
+         <td width=100 class="end"><input type="text" size=15 class="loansend" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
       </tr>
       <tr class="loansaccount">
          <td >3</td>
          <td width=100 class="bankname"><input type="text" size=10 class="loansbankname"></td>
-         <td width=300 class="code"><input type="text" size=10 class="loanscode"></td>
+         <td width=300 class="code"><input type="text" size=10 class="loanscode" Only="true"></td>
          <td width=200 class="name"><input type="text" size=10 class="loansname" ></td>
-         <td width=50 class="rate"><input type="text" size=3 class="loansrate" ></td>
-         <td width=100 class="amount"><input type="text" size=10 class="loansamount" ></td>
-         <td width=100 class="start"><input type="text" size=15 class="loansstart"></td>
-         <td width=100 class="end"><input type="text" size=15 class="loansend"></td>
+         <td width=50 class="rate"><input type="text" size=3 class="loansrate" dotOnly="true">%</td>
+         <td width=100 class="amount"><input type="text" size=10 class="loansamount" onkeyup="numberinput(this);">원</td>
+         <td width=100 class="start"><input type="text" size=15 class="loansstart" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
+         <td width=100 class="end"><input type="text" size=15 class="loansend" onkeyup="dateinput(this,'-',5,7);" maxlength="10"></td>
       </tr>
       </tbody>
    </table>
@@ -201,6 +201,63 @@
 $(frm1).hide();
 $(frm2).hide();
 $(frm3).hide();
+
+function dateinput(obj,mark,index1,index2){
+   var number=obj.value.replace(/[^0-9]/g,"");
+   var str="";
+   console.log(index1);
+   console.log(index2);
+   
+   if(index1 != null && index2 ==null){
+      if(number.length <index1) {
+         str=number;
+      }else if(number.length>=index1) {
+         str+=number.substring(0,index1-1);
+         str+=mark;
+         str+=number.substr(index1-1);
+      }
+   }
+   if(index1!=null&&index2!=null){
+      if(number.length<index1){
+         str=number;
+      }else if(number.length<index2){
+         str+=number.substring(0,index1-1);
+         str+=mark;
+         str+=number.substr(index1-1);
+      }else {
+         str+=number.substring(0,index1-1);
+         str+=mark;
+         str+=number.substring(index1-1,index2-1);
+         str+=mark;
+         str+=number.substr(index2-1);
+      }
+   }
+   obj.value=str;
+}
+
+function numberinput(obj){
+   obj.value = comma(uncomma(obj.value));
+}
+
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
+
+$(document).on("keyup", "input[Only]", function() {
+   $(this).val( $(this).val().replace(/[^0-9-]/gi,"") );
+   });
+   
+$(document).on("keyup", "input[dotOnly]", function() {
+   $(this).val( $(this).val().replace(/[^0-9.]/gi,"") );
+   });
+
+
 //중분류 리스트 뽑기
 getList();
 function getList() {
@@ -214,7 +271,7 @@ function getList() {
             $(data).each(function() {
                addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"' name='"+this.CATEGORYNAME+"'><td width=100 class='lcategoryname' rowspan=3>"+this.CATEGORYNAME.split("/")[1]+"<input type='button' class='btnaddrow' value='+'></td>";
                addList += "<td  class='mcategorycode'>001</td>";
-               addList += "<td 0 class='mcategoryname' ><input type='text' size=35  class='midname' placeholder='ex)아메리카노,아이스라떼,카페모카 등..'></td></tr>";
+               addList += "<td 0 class='mcategoryname' ><input type='text' size=30  class='midname' placeholder='ex)아메리카노,아이스라떼,카페모카 등..'></td></tr>";
                addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"'name='"+this.CATEGORYNAME+"'><td width=100 class='mcategorycode'>002</td>";
                addList += "<td 0 class='mcategoryname'><input type='text' size=30 class='midname' ></td></tr>";
                addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"'name='"+this.CATEGORYNAME+"'><td width=100 class='mcategorycode'>003</td>";
@@ -259,52 +316,58 @@ function resizeRowspan(cls){
 }
 });
 
-   //행추가
-   $(".btnadd").click(function(){
-       if(!$(frm).is(":hidden")){
-         var trCnt=$("#tbl tr").length;
-         if(trCnt<10){
-            var trCnt1 ="00"+trCnt;
-         }else if(trCnt<100 && trCnt>=10) {
-            trCnt1="0"+trCnt;
-         }else if(trCnt>=100) {
-            trCnt1=trCnt;
-         }
-         var str="";
-         str+="<tr class='lcategory'>";
-         str+="<td class='lcategorycode'>"+trCnt1+"</td>";
-         str+="<td class='lcategoryname'><input type='text' class='largename' size=30></td>";
-         str+="</tr>";
-         $("#tbl > tbody:last").append(str);
-      }else if(!$(frm2).is(":hidden")){
-         var trCnt=$("#tbl2 tr").length;
-         var str="";
-         str+="<tr class='depositaccount'>";
-         str+="<td>"+trCnt+"</td>";
-         str+="<td width=100 class='bankname'><input type='text' size=10 class='depositaccountbankname'></td>";
-         str+="<td width=250 class='code'><input type='text' size=20  class='depositaccountcode'></td>";
-         str+="<td width=150 class='name'><input type='text' size=10 class='depositaccountname' ></td>";
-         str+="<td width=50 class='rate'><input type='text' size=5 class='depositaccountrate' ></td>";
-         str+="<td width=80 class='start'><input type='text' size=15 class='depositaccountstart'></td>";
-         str+="<td width=80 class='amount'><input type='text' size=15 class='depositaccrountamount'></td>";
-         str+="</tr>";
-         $("#tbl2 > tbody:last").append(str);
-      } else if(!$(frm3).is(":hidden")){
-         var trCnt1=$("#tbl3 tr").length;
-         var str="";
-         str+="<tr class='loansaccount'>";
-         str+="<td>"+trCnt1+"</td>";
-         str+="<td width=100 class='bankname'><input type='text' size=10 class='loansbankname'></td>";
-         str+="<td width=250 class='code'><input type='text' size=10 class='loanscode'></td>";
-         str+="<td width=150 class='name'><input type='text' size=10 class='loansname' ></td>";
-         str+="<td width=50 class='rate'><input type='text' size=3 class='loansrate' ></td>";
-         str+="<td width=80 class='amount'><input type='text' size=10 class='loansamount' ></td>";
-         str+="<td width=80 class='start'><input type='text' size=15 class='loansstart'></td>";
-         str+="<td width=80 class='end'><input type='text' size=15 class='loansend'></td>";
-         str+="</tr>";
-         $("#tbl3 > tbody:last").append(str);
+//행추가
+$(".btnadd").click(function(){
+      if(!$(frm).is(":hidden")){
+      var trCnt=$("#tbl tr").length;
+      if(trCnt<10){
+         var trCnt1 ="00"+trCnt;
+      }else if(trCnt<100 && trCnt>=10) {
+         trCnt1="0"+trCnt;
+      }else if(trCnt>=100) {
+         trCnt1=trCnt;
       }
-   });
+      var str="";
+      str+="<tr class='lcategory'>";
+      str+="<td class='lcategorycode'>"+trCnt1+"</td>";
+      str+="<td class='lcategoryname'><input type='text' class='largename' size=30></td>";
+      str+="</tr>";
+      $("#tbl > tbody:last").append(str);
+   }else if(!$(frm2).is(":hidden")){
+      var trCnt=$("#tbl2 tr").length;
+      var str="";
+
+      str+="<tr class='depositaccount'>";
+      str+="<td>"+trCnt+"</td>";
+      str+="<td width=100 class='bankname'><input type='text' size=10 class='depositaccountbankname'></td>";
+      str+="<td width=250 class='code'><input type='text' size=20  class='depositaccountcode' Only='true'></td>";
+      str+="<td width=150 class='name'><input type='text' size=10 class='depositaccountname' ></td>";
+      str+="<td width=50 class='rate'><input type='text' size=5 class='depositaccountrate' dotOnly='true'>%</td>";
+      str+="<td width=80 class='start'><input type='text' size=15 class='depositaccountstart' maxlength='10' ></td>";
+      str+="<td width=80 class='amount'><input type='text' size=15 class='depositaccrountamount' onkeyup='numberinput(this);'>원</td>";
+      str+="</tr>";
+      $("#tbl2 > tbody:last").append(str);
+      $(".depositaccount").find(".start").find("input").attr("onkeyup","dateinput(this,'-',5,7)");
+
+   } else if(!$(frm3).is(":hidden")){
+      var trCnt1=$("#tbl3 tr").length;
+      var str="";
+   
+      str+="<tr class='loansaccount'>";
+      str+="<td>"+trCnt1+"</td>";
+      str+="<td width=100 class='bankname'><input type='text' size=10 class='loansbankname'></td>";
+      str+="<td width=250 class='code'><input type='text' size=10 class='loanscode' Only='true'></td>";
+      str+="<td width=150 class='name'><input type='text' size=10 class='loansname' ></td>";
+      str+="<td width=50 class='rate'><input type='text' size=3 class='loansrate' dotOnly='true'>%</td>";
+      str+="<td width=80 class='amount'><input type='text' size=10 class='loansamount' onkeyup='numberinput(this);'>원</td>";
+      str+="<td width=80 class='start'><input type='text' size=15 class='loansstart' maxlength='10'></td>";
+      str+="<td width=80 class='end'><input type='text' size=15 class='loansend' maxlength='10'></td>";
+      str+="</tr>";
+      $("#tbl3 > tbody:last").append(str);
+      $(".loansaccount").find(".start").find("input").attr("onkeyup","dateinput(this,'-',5,7)");
+      $(".loansaccount").find(".end").find("input").attr("onkeyup","dateinput(this,'-',5,7)");
+   }
+});
    
    
    //행삭제
@@ -334,46 +397,44 @@ function resizeRowspan(cls){
    });
    
    
-   //대분류 저장
+ //대분류 저장
    $(frm).submit(function(e){
       e.preventDefault();
       if(!confirm("미입력시 기본값으로 자동적용됩니다.\n그래도 저장하시겠습니까?")) return;
       if(!$(frm).is(":hidden")){
          $("#tbl .lcategory").each(function(){
-//          var companyCode=(String)session.getAttribute("companyCode");
-//          alert(companyCode);
          var strlcode=$(this).find(".lcategorycode").html();
          var lcode=strlcode+"/000";
          var strlname=$(this).find(".lcategoryname").find(".largename").val();
          var lname=strlname+"/empty";
+         
          if(strlname!=""){
             $.ajax({
             type : "post",
             url :"categoryinsert",
             data :{"categorycode": lcode, "categoryname":lname},
-            success: function(){
+            success: function(data){
                var addList = "";
-               $.ajax({
-                  type:"get",
-                  url:"categorylist.json",
-                  success:function(data) {
-                     if($(data.CATEGORYNAME)!= null){
-                        addList += "<thead><th width=100>대분류</th><th width=100>중분류 상품 코드</th><th width=200>중분류 상품 이름</th></thead></tbody id=''body>";
-                        $(data).each(function() {
-//                            alert("여기");
-                           addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"' name='"+this.CATEGORYNAME+"'><td width=100 class='lcategoryname' rowspan=3>"+this.CATEGORYNAME.split("/")[1]+"<input type='button' class='btnaddrow' value='+'></td>";
-                           addList += "<td  class='mcategorycode'>001</td>";
-                           addList += "<td 0 class='mcategoryname' ><input type='text' size=30  class='midname' placeholder='ex)아메리카노,아이스라떼,카페모카 등..'></td></tr>";
-                           addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"'name='"+this.CATEGORYNAME+"'><td width=100 class='mcategorycode'>002</td>";
-                           addList += "<td 0 class='mcategoryname'><input type='text' size=30 class='midname' ></td></tr>";
-                           addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"'name='"+this.CATEGORYNAME+"'><td width=100 class='mcategorycode'>003</td>";
-                           addList += "<td  class='mcategoryname'><input type='text' size=30  class='midname' ></td></tr>";
-                        });
-                           addList +="</tbody>";
-                        $("#tbl1").html(addList);
+                  $.ajax({
+                     type:"get",
+                     url:"categorylist.json",
+                     success:function(data) {
+                        if($(data.CATEGORYNAME)!= null){
+                           addList += "<thead><th width=100>대분류</th><th width=100>중분류 상품 코드</th><th width=200>중분류 상품 이름</th></thead></tbody id=''body>";
+                           $(data).each(function() {
+                              addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"' name='"+this.CATEGORYNAME+"'><td width=100 class='lcategoryname' rowspan=3>"+this.CATEGORYNAME.split("/")[1]+"<input type='button' class='btnaddrow' value='+'></td>";
+                              addList += "<td  class='mcategorycode'>001</td>";
+                              addList += "<td 0 class='mcategoryname' ><input type='text' size=30  class='midname' placeholder='ex)아메리카노,아이스라떼,카페모카 등..'></td></tr>";
+                              addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"'name='"+this.CATEGORYNAME+"'><td width=100 class='mcategorycode'>002</td>";
+                              addList += "<td 0 class='mcategoryname'><input type='text' size=30 class='midname' ></td></tr>";
+                              addList += "<tr class='row"+this.CATEGORYCODE.split("/")[1]+"' code='"+this.CATEGORYCODE+"'name='"+this.CATEGORYNAME+"'><td width=100 class='mcategorycode'>003</td>";
+                              addList += "<td  class='mcategoryname'><input type='text' size=30  class='midname' ></td></tr>";
+                           });
+                              addList +="</tbody>";
+                           $("#tbl1").html(addList);
+                        }
                      }
-                  }
-               });
+                  });
             }
          });
          }
@@ -384,7 +445,6 @@ function resizeRowspan(cls){
       
       }
    });
-   
 
    
    //중분류 저장
@@ -468,6 +528,7 @@ function resizeRowspan(cls){
             });
          });
          alert("저장완료 되었습니다.\n수정은 로그인 후 설정탭에서 완료바랍니다.");
+         alert("로그인창으로 이동합니다.")
          }
          location.href="logout";
       });

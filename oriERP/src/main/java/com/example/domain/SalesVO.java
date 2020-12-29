@@ -3,11 +3,19 @@ package com.example.domain;
 public class SalesVO {
 	private String companyCode;
 	private String day;
+	private String categoryCode;
 	private String categoryName;
 	private String payType;
 	private int salesCount;
 	private double SalesAmount;
 	private String SalesType;
+	
+	public String getCategoryCode() {
+		return categoryCode;
+	}
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
 	public String getCompanyCode() {
 		return companyCode;
 	}

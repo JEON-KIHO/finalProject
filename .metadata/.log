@@ -5222,3 +5222,883 @@ java.net.UnknownHostException: jope.ow2.org
 
 !ENTRY org.eclipse.wst.common.project.facet.core 4 0 2020-12-29 08:09:10.210
 !MESSAGE Project facet grails.app has not been defined. It is used in plugin org.eclipse.cft.server.branding.core.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:09:59.787
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:09:59.790
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:10:11.011
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:10:11.012
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:10:51.248
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:10:51.249
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:14:31.252
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:14:31.257
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:15:21.435
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:15:21.438
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:16:57.491
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:16:57.495
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:19:03.544
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:19:03.547
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:19:10.854
+!MESSAGE Failed to download org.eclipse.recommenders:index::zip:0.0.0
+!STACK 0
+org.eclipse.aether.resolution.ArtifactResolutionException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223)
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294)
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:192)
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:174)
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:165)
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed(ArtifactTransportListener.java:39)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run(BasicRepositoryConnector.java:355)
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$DirectExecutor.execute(BasicRepositoryConnector.java:581)
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector.get(BasicRepositoryConnector.java:249)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:520)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421)
+	... 8 more
+
+!ENTRY org.eclipse.recommenders.models.rcp 1 0 2020-12-29 09:19:10.855
+!MESSAGE org.eclipse.recommenders:index::zip:0.0.0 could not be resolved from the model repositories. Are you offline?
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:20:01.046
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:20:01.052
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:21:15.289
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:21:15.291
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:21:28.887
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:21:28.890
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:21:49.810
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:21:49.813
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:27:00.254
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:27:00.257
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:28:59.125
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:28:59.128
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Publishing failed with multiple errors
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\animal-sniffer-annotations-1.14.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\aopalliance-1.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\aspectjrt-1.6.10.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\byte-buddy-1.8.15.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\checker-compat-qual-2.0.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-codec-1.14.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-exec-1.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.436
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-fileupload-1.3.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-io-2.7.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-logging-1.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\easycodef-java-1.0.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\error_prone_annotations-2.1.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\guava-25.0-jre.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\j2objc-annotations-1.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jackson-annotations-2.5.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jackson-core-2.5.4.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jackson-databind-2.5.4.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\javax.inject-1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jcl-over-slf4j-1.6.6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jsr305-1.3.9.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jstl-1.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\log4j-1.2.15.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\log4jdbc-log4j2-jdbc4-1.16.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\mybatis-3.2.8.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\mybatis-spring-1.2.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\mysql-connector-java-5.1.35.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\ojdbc6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\okhttp-3.11.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\okio-1.14.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-api-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-chrome-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-edge-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-firefox-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-ie-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-java-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-opera-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-remote-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-safari-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-support-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\slf4j-api-1.6.6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\slf4j-log4j12-1.6.6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-aop-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-beans-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-context-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-core-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-expression-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-jdbc-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-test-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-tx-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-web-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:41.437
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-webmvc-4.1.7.RELEASE.jar. May be locked by another process.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:43:42.433
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:43:42.435
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.springframework.ide.eclipse.beans.core 1 0 2020-12-29 09:43:42.833
+!MESSAGE Error occured processing '/oriERP/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml'
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:348)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:405)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:405)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at org.springframework.core.type.classreading.RecursiveAnnotationAttributesVisitor.visitEnd(RecursiveAnnotationAttributesVisitor.java:47)
+	at org.springframework.asm.ClassReader.readAnnotationValues(ClassReader.java:1802)
+	at org.springframework.asm.ClassReader.readMethod(ClassReader.java:982)
+	at org.springframework.asm.ClassReader.accept(ClassReader.java:695)
+	at org.springframework.asm.ClassReader.accept(ClassReader.java:508)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:64)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:98)
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:102)
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:279)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:248)
+	at org.springframework.context.annotation.ComponentScanBeanDefinitionParser.parse(ComponentScanBeanDefinitionParser.java:87)
+	at org.springframework.beans.factory.xml.NamespaceHandlerSupport.parse(NamespaceHandlerSupport.java:74)
+	at org.springframework.ide.eclipse.beans.core.internal.model.namespaces.DelegatingNamespaceHandlerResolver$ElementTrackingNamespaceHandler.parse(DelegatingNamespaceHandlerResolver.java:177)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1411)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$ErrorSuppressingBeanDefinitionParserDelegate.parseCustomElement(BeansConfig.java:1428)
+	at org.springframework.beans.factory.xml.BeanDefinitionParserDelegate.parseCustomElement(BeanDefinitionParserDelegate.java:1401)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:168)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$ToolingFriendlyBeanDefinitionDocumentReader.doRegisterBeanDefinitions(BeansConfig.java:1357)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:94)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:508)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$2.registerBeanDefinitions(BeansConfig.java:410)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:392)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$2.loadBeanDefinitions(BeansConfig.java:394)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:453)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:43:44.491
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:43:44.501
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Publishing failed with multiple errors
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\animal-sniffer-annotations-1.14.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\aopalliance-1.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\aspectjrt-1.6.10.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\byte-buddy-1.8.15.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\checker-compat-qual-2.0.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-codec-1.14.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-exec-1.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-fileupload-1.3.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-io-2.7.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\commons-logging-1.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\easycodef-java-1.0.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\error_prone_annotations-2.1.3.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\guava-25.0-jre.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\j2objc-annotations-1.1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jackson-annotations-2.5.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jackson-core-2.5.4.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jackson-databind-2.5.4.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\javax.inject-1.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jcl-over-slf4j-1.6.6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jsr305-1.3.9.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\jstl-1.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\log4j-1.2.15.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\log4jdbc-log4j2-jdbc4-1.16.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\mybatis-3.2.8.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\mybatis-spring-1.2.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\mysql-connector-java-5.1.35.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\ojdbc6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\okhttp-3.11.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\okio-1.14.0.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-api-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-chrome-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-edge-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-firefox-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-ie-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-java-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-opera-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-remote-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-safari-driver-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\selenium-support-3.141.59.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\slf4j-api-1.6.6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\slf4j-log4j12-1.6.6.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-aop-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-beans-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-context-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-core-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-expression-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-jdbc-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-test-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-tx-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-web-4.1.7.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2020-12-29 09:43:46.355
+!MESSAGE Could not delete D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\ERP\WEB-INF\lib\spring-webmvc-4.1.7.RELEASE.jar. May be locked by another process.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-12-29 09:44:01.030
+!MESSAGE Could not delete D:/spring/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/ERP/WEB-INF/lib/ojdbc6.jar. May be locked by another process.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:44:22.117
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:44:22.130
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:44:23.602
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:44:23.616
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-12-29 09:44:24.862
+!MESSAGE Could not delete D:/spring/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/ERP/WEB-INF/lib/ojdbc6.jar. May be locked by another process.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:46:16.736
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:46:16.773
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:46:20.818
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:46:20.819
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:46:31.691
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 09:46:31.692
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:25:46.801
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:25:46.803
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:29:40.620
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:29:40.621
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:29:53.432
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:29:53.433
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:30:51.265
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:30:51.266
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:31:30.183
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:31:30.184
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:31:56.990
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:31:56.992
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:32:43.303
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:32:43.304
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:33:08.864
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:33:08.865
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:33:10.925
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:33:10.926
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:33:49.936
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:33:49.938
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:15.840
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:15.841
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:40.514
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:40.515
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:48.682
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:48.683
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:58.040
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:34:58.041
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:35:35.916
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:35:35.917
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:35:56.028
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:35:56.029
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:36:38.034
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:36:38.035
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:37:06.955
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:37:06.956
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:39:41.935
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:39:41.937
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:39:43.139
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:39:43.141
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:42:31.991
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:42:31.992
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:58:09.742
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:58:09.744
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:59:49.315
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 10:59:49.317
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:01:47.369
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:01:47.372
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:02:04.277
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:02:04.280
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:43:24.432
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:43:24.434
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:47:49.290
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:47:49.291
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:48:35.867
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:48:35.868
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:50:36.745
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:50:36.745
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:51:25.475
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:51:25.479
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:52:43.925
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:52:43.926
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:53:37.659
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:53:37.660
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:53:48.680
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:53:48.681
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:54:18.176
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:54:18.177
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:54:47.139
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:54:47.140
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:55:26.319
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:55:26.320
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:56:54.638
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:56:54.639
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:58:30.893
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 11:58:30.894
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:19:07.428
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:19:07.429
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:19:30.903
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:19:30.906
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:19:39.217
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:19:39.219
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:23:30.619
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:23:30.622
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:41:25.922
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:41:25.924
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:42:29.617
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:42:29.618
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:42:59.792
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:42:59.793
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:55:03.059
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:55:03.060
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:55:10.411
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:55:10.413
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:59:53.039
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 12:59:53.041
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:03:40.992
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:03:40.995
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:05:16.940
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:05:16.941
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:05:33.708
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:05:33.709
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:05:44.264
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:05:44.265
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:08:20.047
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:08:20.049
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:10:28.035
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:10:28.038
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:15:05.943
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:15:05.946
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:15:22.827
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:15:22.830
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:15:44.640
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:15:44.642
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:21:02.949
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:21:02.950
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:21:34.365
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:21:34.366
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:23:09.139
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:23:09.153
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:24:12.978
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:24:12.979
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:24:32.018
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:24:32.019
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:25:47.220
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:25:47.221
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:26:28.687
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:26:28.688
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:27:44.750
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:27:44.751
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:28:47.386
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:28:47.387
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:29:54.195
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:29:54.195
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:31:09.984
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:31:09.985
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:32:50.999
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:32:51.000
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:34:25.066
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:34:25.067
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:36:17.299
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:36:17.299
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:37:49.459
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:37:49.459
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:39:53.967
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:39:53.968
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:47:11.041
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:47:11.042
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:49:08.983
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:49:08.984
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:51:15.303
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:51:15.305
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:53:00.696
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:53:00.696
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:53:36.052
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 13:53:36.053
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 14:09:08.686
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-29 14:09:08.688
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!

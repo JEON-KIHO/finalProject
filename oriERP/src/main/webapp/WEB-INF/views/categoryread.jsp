@@ -178,7 +178,65 @@ getList();
 dgetList();
 loansgetList();
 
+function dateinput(obj,mark,index1,index2){
+   var number=obj.value.replace(/[^0-9]/g,"");
+   var str="";
+   console.log(index1);
+   console.log(index2);
+   
+   if(index1 != null && index2 ==null){
+      if(number.length <index1) {
+         str=number;
+      }else if(number.length>=index1) {
+         str+=number.substring(0,index1-1);
+         str+=mark;
+         str+=number.substr(index1-1);
+      }
+   }
+   if(index1!=null&&index2!=null){
+      if(number.length<index1){
+         str=number;
+      }else if(number.length<index2){
+         str+=number.substring(0,index1-1);
+         str+=mark;
+         str+=number.substr(index1-1);
+      }else {
+         str+=number.substring(0,index1-1);
+         str+=mark;
+         str+=number.substring(index1-1,index2-1);
+         str+=mark;
+         str+=number.substr(index2-1);
+      }
+   }
+   obj.value=str;
+}
 
+function numberinput(obj){
+   obj.value = comma(uncomma(obj.value));
+}
+
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
+
+$(document).on("keyup", "input[Only]", function() {
+   $(this).val( $(this).val().replace(/[^0-9-]/gi,"") );
+   });
+
+$(document).on("keyup", "input[dotOnly]", function() {
+   $(this).val( $(this).val().replace(/[^0-9.]/gi,"") );
+   });
+
+$(document).on("keyup", "input[hionly]", function() {
+   $(this).val( $(this).val().replace(/[^0-9-]/gi,"") )
+
+   });
 
    $(document).ready(function(){
          //항목추가 버튼 클릭시
@@ -337,53 +395,56 @@ function loansgetList() {
 }
 
 
-   $(".btnadd").click(function(){
-       if(!$(frm).is(":hidden")){
-         var trCnt=$("#tbl tr").length;
-         if(trCnt<10){
-            var trCnt1 ="00"+trCnt;
-         }else if(trCnt<100 && trCnt>=10) {
-            trCnt1="0"+trCnt;
-         }else if(trCnt>=100) {
-            trCnt1=trCnt;
-         }
-         var str="";
-         str+="<tr class='lcategory'>";
-         str+="<td class='lcategorycode'>"+trCnt1+"</td>";
-         str+="<td class='lcategoryname'><input type='text' class='largename' size=30></td>";
-         str+="</tr>";
-         $("#tbl > tbody:last").append(str);
-         
-       }else if(!$(frm2).is(":hidden")){
-            var trCnt=$("#tbl2 tr").length;
-            
-            var str="";
-            str+="<tr class='depositaccount'>";
-            str+="<td>"+trCnt+"</td>";
-            str+="<td width=100 class='bankname'><input type='text' size=10 class='depositaccountbankname'></td>";
-            str+="<td width=300 class='code'><input type='text' size=20 class='depositaccountcode'></td>";
-            str+="<td width=200 class='name'><input type='text' size=10 class='depositaccountname' ></td>";
-            str+="<td width=50 class='rate'><input type='text' size=5 class='depositaccountrate' >%</td>";
-            str+="<td width=100 class='start'><input type='text' size=15 class='depositaccountstart'></td>";
-            str+="<td width=100 class='amount'><input type='text' size=15 class='depositaccrountamount'>원</td>";
-            str+="</tr>";
-            $("#tbl2 > tbody:last").append(str);
-         } else if(!$(frm3).is(":hidden")){
-            var trCnt1=$("#tbl3 tr").length;
-            var str="";
-            str+="<tr class='loansaccount'>";
-            str+="<td>"+trCnt1+"</td>";
-            str+="<td width=100 class='bankname'><input type='text' size=10 class='loansbankname'></td>";
-            str+="<td width=300 class='code'><input type='text' size=10 class='loanscode'></td>";
-            str+="<td width=200 class='name'><input type='text' size=10 class='loansname' ></td>";
-            str+="<td width=50 class='rate'><input type='text' size=3 class='loansrate' >%</td>";
-            str+="<td width=100 class='amount'><input type='text' size=10 class='loansamount' >원</td>";
-            str+="<td width=100 class='start'><input type='text' size=15 class='loansstart'></td>";
-            str+="<td width=100 class='end'><input type='text' size=15 class='loansend'></td>";
-            str+="</tr>";
-            $("#tbl3 > tbody:last").append(str);
+$(".btnadd").click(function(){
+      if(!$(frm).is(":hidden")){
+      var trCnt=$("#tbl tr").length;
+      if(trCnt<10){
+         var trCnt1 ="00"+trCnt;
+      }else if(trCnt<100 && trCnt>=10) {
+         trCnt1="0"+trCnt;
+      }else if(trCnt>=100) {
+         trCnt1=trCnt;
       }
-   });
+      var str="";
+      str+="<tr class='lcategory'>";
+      str+="<td class='lcategorycode'>"+trCnt1+"</td>";
+      str+="<td class='lcategoryname'><input type='text' class='largename' size=30 ></td>";
+      str+="</tr>";
+      $("#tbl > tbody:last").append(str);
+      
+      }else if(!$(frm2).is(":hidden")){
+         var trCnt=$("#tbl2 tr").length;
+         var str="";
+         str+="<tr class='depositaccount'>";
+         str+="<td>"+trCnt+"</td>";
+         str+="<td width=100 class='bankname'><input type='text' size=10 class='depositaccountbankname'></td>";
+         str+="<td width=300 class='code'><input type='text' size=20 class='depositaccountcode' Only='true'></td>";
+         str+="<td width=200 class='name'><input type='text' size=10 class='depositaccountname' ></td>";
+         str+="<td width=50 class='rate'><input type='text' size=5 class='depositaccountrate' dotOnly='true'>%</td>";
+         str+="<td width=100 class='start'><input type='text' size=15 class='depositaccountstart' maxlength='10'></td>";
+         str+="<td width=100 class='amount'><input type='text' size=15 class='depositaccrountamount' onkeyup='numberinput(this);'>원</td>";
+         str+="</tr>";
+         $("#tbl2 > tbody:last").append(str);
+         $(".depositaccount").find(".start").find("input").attr("onkeyup","dateinput(this,'-',5,7)");
+         
+      } else if(!$(frm3).is(":hidden")){
+         var trCnt1=$("#tbl3 tr").length;
+         var str="";
+         str+="<tr class='loansaccount'>";
+         str+="<td>"+trCnt1+"</td>";
+         str+="<td width=100 class='bankname'><input type='text' size=10 class='loansbankname'></td>";
+         str+="<td width=300 class='code'><input type='text' size=10 class='loanscode' Only='true'></td>";
+         str+="<td width=200 class='name'><input type='text' size=10 class='loansname' ></td>";
+         str+="<td width=50 class='rate'><input type='text' size=3 class='loansrate' dotOnly='true'>%</td>";
+         str+="<td width=100 class='amount'><input type='text' size=10 class='loansamount' onkeyup='numberinput(this);'>원</td>";
+         str+="<td width=100 class='start'><input type='text' size=15 class='loansstart' maxlength='10'></td>";
+         str+="<td width=100 class='end'><input type='text' size=15 class='loansend' maxlength='10'></td>";
+         str+="</tr>";
+         $("#tbl3 > tbody:last").append(str);
+         $(".loansaccount").find(".start").find("input").attr("onkeyup","dateinput(this,'-',5,7)");
+         $(".loansaccount").find(".end").find("input").attr("onkeyup","dateinput(this,'-',5,7)");
+   }
+});
    
    
    //입력칸 삭제
@@ -495,10 +556,9 @@ function loansgetList() {
             if(strmname!=""){
                $.ajax({
                   type : "post", 
-                  url :"categoryupdate",
+                  url :"mcategoryupdate",
                   data :{"categorycode": lcode, "categoryname":mname},
                   success: function(){
-                     alert("성공");
                   }
                });
             }
@@ -519,14 +579,14 @@ function loansgetList() {
          var name=$(this).find(".name").find(".depositaccountname").val();
          var rate=$(this).find(".rate").find(".depositaccountrate").val();
          var start=$(this).find(".start").find(".depositaccountstart").val();
-         var amount=$(this).find(".amount").find(".depositaccrountamount").val();
+         var amount=uncomma($(this).find(".amount").find(".depositaccrountamount").val());
          
          $.ajax({
             type : "post",
             url :"depositaccountinsert",
-            data :{"depositaccountbankname": bankname, "depositaccountcode":code,"depositaccountname":name, "depositaccountrate":rate,"depositaccount_startday":start,"depositaccountamount":amount},
+            data :{"depositAccountBankName": bankname, "depositAccountCode":code,"depositAccountName":name, "depositAccountRate":rate,"depositAccount_startday":start,"depositAccountAmount":amount},
             success: function(data){
-               alert("성공");
+               
             }
          });
       });
@@ -544,15 +604,15 @@ function loansgetList() {
          var code=$(this).find(".code").find(".loanscode").val();
          var name=$(this).find(".name").find(".loansname").val();
          var rate=$(this).find(".rate").find(".loansrate").val();
-         var amount=$(this).find(".amount").find(".loansamount").val();
+         var amount=uncomma($(this).find(".amount").find(".loansamount").val());
          var start=$(this).find(".start").find(".loansstart").val();
          var end=$(this).find(".end").find(".loansend").val();
          $.ajax({
             type : "post",
             url : "loansaccountinsert",
-            data : {"loansaccountbankname": bankname, "loansaccountcode":code, "loansaccountname":name, "loansaccountrate":rate, "loansaccount_startday":start, "loansaccount_endday":end, "loansaccountamount":amount},
+            data : {"loansAccountBankName": bankname, "loansAccountCode":code, "loansAccountName":name, "loansAccountRate":rate, "loansAccount_startDay":start, "loansAccount_endDay":end, "loansAccountAmount":amount},
             success: function(data){
-               alert("성공");
+             
             }
          });
       });

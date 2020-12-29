@@ -2,11 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper_oracle.LoansAccountMapper">
 <insert id="loansaccountinsert">
-   insert into loansaccount(loansaccountcode, loansaccountbankname, loansaccountname, loansaccountrate, loansaccountamount, loansaccount_startday, loansaccount_endday) values(#{loansAccountCode}, #{loansAccountBankName},#{loansAccountName}, #{loansAccountRate},#{loansAccountAmount},#{loansAccount_startDay},#{loansAccount_endDay})
+   insert into loansaccount(loansaccountcode, loansaccountbankname, loansaccountname, loansaccountrate, loansaccountamount, loansaccount_startday, loansaccount_endday) 
+   values(#{loansAccountCode}, #{loansAccountBankName},#{loansAccountName}, #{loansAccountRate},#{loansAccountAmount},#{loansAccount_startDay},#{loansAccount_endDay})
 </insert>
 <select id="loansaccountlist" resultType="hashmap">
    select sum(loansamount) sumamount,loansaccountbankname, loans_companycode, loansaccountcode, loansaccountamount 
-   from loansview
+   from loansview where loans_companycode=#{companyCode}
    group by loansaccountcode,loans_companycode,loansaccountbankname, loansaccountcode,loansaccountamount
 </select>
 <insert id="loansinsert">

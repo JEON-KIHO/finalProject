@@ -3,6 +3,8 @@ package com.example.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,60 +29,61 @@ public class DepositService {
    CategoryMapper cmapper;
    
    
-   //예금 등록 후 예금 계정의 기초잔액 변경
+   // 삁湲   벑濡   썑  삁湲  怨꾩젙 쓽 湲곗큹 옍 븸 蹂 寃 
    @Transactional
    public void depositinsert(DepositVO vo) {
       mapper.depositinsert(vo);
       mapper.depositaccountupdate(vo.getDepositBalance(),vo.getDeposit_depositAccountCode());
    }
    
-   //예금 계정 등록 후 예금 tab에 insert
-   @Transactional
-   public void depositaccountinsert(DepositAccountVO vo) {
-	   System.out.println(vo.toString());
-      mapper.depositaccountinsert(vo);
-      DepositVO dvo=new DepositVO();
-      dvo.setDeposit_companyCode("153-60-00064");
-      dvo.setDeposit_day(vo.getDepositAccount_startday());
-      dvo.setDeposit_depositAccountCode(vo.getDepositAccountCode());
-      dvo.setDepositAccountAmount(0);
-      dvo.setDepositBalance(vo.getDepositAccountAmount());
-      dvo.setDepositType("입금");
-      mapper.depositinsert(dvo);
-      System.out.println(dvo.toString());
-   }
+   // 삁湲  怨꾩젙  벑濡   썑  삁湲  tab 뿉 insert
+//   @Transactional
+//   public void depositaccountinsert(DepositAccountVO vo, HttpSession session) {
+//      System.out.println(vo.toString());
+//      mapper.depositaccountinsert(vo);
+//      DepositVO dvo=new DepositVO();
+//      String companyCode=(String)session.getAttribute("companyCode");
+//      dvo.setDeposit_companyCode(companyCode);
+//      dvo.setDeposit_day(vo.getDepositAccount_startday());
+//      dvo.setDeposit_depositAccountCode(vo.getDepositAccountCode());
+//      dvo.setDepositAccountAmount(0);
+//      dvo.setDepositBalance(vo.getDepositAccountAmount());
+//      dvo.setDepositType("입금");
+//      mapper.depositinsert(dvo);
+//      System.out.println(dvo.toString());
+//   }
+//   
+//   
+//   //  異  怨꾩젙  벑濡   썑   異  tab 뿉 insert
+//   @Transactional
+//   public void loansaccountinsert(LoansAccountVO vo) {
+//      lmapper.loansaccountinsert(vo);
+//      LoansVO lvo=new LoansVO();
+//      lvo.setLoans_companyCode("153-60-00064");
+//      lvo.setLoans_loansAccountCode(vo.getLoansAccountCode());
+//      lvo.setLoans_repaymentDay(vo.getLoansAccount_startDay());
+//      lvo.setLoansAmount(0);
+//      lvo.setLoansBalance(vo.getLoansAccountAmount());
+//      lmapper.loansinsert(lvo);
+//   }
    
-   
-   //대출 계정 등록 후 대출 tab에 insert
-   @Transactional
-   public void loansaccountinsert(LoansAccountVO vo) {
-      lmapper.loansaccountinsert(vo);
-      LoansVO lvo=new LoansVO();
-      lvo.setLoans_companyCode("153-60-00064");
-      lvo.setLoans_loansAccountCode(vo.getLoansAccountCode());
-      lvo.setLoans_repaymentDay(vo.getLoansAccount_startDay());
-      lvo.setLoansAmount(0);
-      lvo.setLoansBalance(vo.getLoansAccountAmount());
-      lmapper.loansinsert(lvo);
-   }
-   
-   //대분류 및 중분류 카테고리 변경 or 추가시 update/insert
+   //  遺꾨쪟 諛  以묐텇瑜  移댄뀒怨좊━ 蹂 寃  or 異붽  떆 update/insert
 //   @Transactional
 //   public void categoryupdate(CategoryVO vo){
 //      String companyCode="153-60-00064";
-//      String companyName="골드스탁";
-//      List<HashMap<String, Object>> oldarray=cmapper.categorylist(companyCode);//원래 있던 데이터
+//      String companyName="怨⑤뱶 뒪 긽";
+//      List<HashMap<String, Object>> oldarray=cmapper.categorylist(companyCode);// 썝 옒  엳 뜕  뜲 씠 꽣
 //   
-//      //대분류 수정
+//      //  遺꾨쪟  닔 젙
 //      cmapper.categoryupdate(vo);
 //      
-//      //대분류 추가
+//      //  遺꾨쪟 異붽 
 //      cmapper.categoryinsert(vo);
 //      List<HashMap<String, Object>> newarray=cmapper.categorylist(companyCode);
 //      
 //      
 //      
-//      //중분류 추가
+//      //以묐텇瑜  異붽 
 //      String mcode="001";
 //      vo.setCategorycode(vo.getCategorycode().substring(0,17)+mcode);
 //      vo.setCategoryname(vo.getCategoryname().split("/")[0]+"/"+vo.getCategoryname().split("/")[1]+"/"+"");
