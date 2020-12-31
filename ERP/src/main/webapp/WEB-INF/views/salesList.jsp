@@ -141,6 +141,7 @@ $("#tabs").on("click",function(){
    function scrollUp(){
       $('html').scrollTop(0);
    }
+   
    function scrollDown(){
       var scrollHeight=$(document).height();
       $('html').animate({scrollTop:scrollHeight},0);

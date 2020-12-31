@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getInven" key="selection"/>
+		<item value="day" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;"/>
-			<item value="getInven"/>
-			<item value="pink"/>
-			<item value="companyCode"/>
-			<item value="frm"/>
-			<item value="detail"/>
-			<item value="lightBox"/>
-			<item value="max"/>
+			<item value="day"/>
+			<item value="예금"/>
+			<item value="insertinven"/>
+			<item value="insert"/>
+			<item value="inven"/>
+			<item value="invenlist"/>
+			<item value="invenList"/>
+			<item value="modal1"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper_oracle.LoansMapper">
     <select id="Llist" resultType="com.example.domain.LoansVO">
-       select * from loansView where(loansAccountCode, loans_repaymentDay)in (
-      select loansAccountCode, max(loans_repaymentDay) from loansView where loans_companyCode = #{companyCode} group by loansAccountCode) 
+       select * from loansView where(loansAccountCode, loans_repaymentDay) in (select loansAccountCode, max(loans_repaymentDay) from loansView where loans_companyCode = #{companyCode} group by loansAccountCode) 
        order by loans_repaymentDay
     </select>
     

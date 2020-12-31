@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper_oracle.DepositMapper">
     <select id = "Dlist" resultType="com.example.domain.DepositVO">
-   select * from depositView_bomi where(depositAccountCode, deposit_day) in(select depositAccountCode, max(deposit_day) from depositView_bomi where deposit_companyCode = #{companyCode} group by depositAccountCode)
+   select * from depositView_bomi where(depositAccountCode, deposit_day) in (select depositAccountCode, max(deposit_day) from depositView_bomi where deposit_companyCode = #{companyCode} group by depositAccountCode)
     order by deposit_day
    </select>
    

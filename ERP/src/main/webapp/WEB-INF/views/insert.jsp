@@ -20,7 +20,7 @@ String day = cal.get(GregorianCalendar.DAY_OF_MONTH)+"";
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>[매출 및 비용 입력]</title>
 <style>
-   html, body {margin:0;text-align: center;}
+    html, body {margin:0;text-align: center;}
    #divCenter {width: 1600px; height: 1000px; margin-left: 200px; margin-top:50px;}
    .tabbed {width:70%; min-width:300px;margin: 0 auto;margin-top:100px;border-bottom: 4px solid #000;overflow: hidden;transition: border 250ms ease;}
      #tbl {color: #669;font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;width:200px; height:40px;overflow: hidden;transition: border 250ms ease;border-collapse: collapse;}
@@ -65,7 +65,7 @@ String day = cal.get(GregorianCalendar.DAY_OF_MONTH)+"";
     #predate, #Nextdate, #redate {width:100px; float:left;}
     #predate {margin-left:140px;}
     #sadate{width:120px; float:left;}
-    #wrapper,#wrapper1{margin-left:430px; width:800px; height:200px; margin-top:100px;}
+    #wrapper,#wrapper1{margin-left:430px; width:900px; height:200px; margin-top:100px;}
     #savedel {margin-left:720px;margin-top:10px; width:100px; padding: .8em .5em; font-family: inherit; font-size:12px; appearance: none; background:white; color:#669;border-radius: 5px; text-align:center;}
     #park {font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif; width:200px; height:640px;margin-top:50px; float:left; display:inline; margin-left:150px;}
     #park td{padding: 10px 8px; font-size:16px;}
@@ -80,12 +80,11 @@ String day = cal.get(GregorianCalendar.DAY_OF_MONTH)+"";
     #deposittbl1 th, #loanstbl1 th {border-bottom:2px solid  #6678b1;}
     #deposittbl td,#loanstbl td {padding: 0px 10px; font-size:16px;}
     #deposittbl th,#loanstbl th  {border-bottom:2px solid  #6678b1;} 
-    #saletbl1, #refundtbl1 {margin-right:0; text-align:center; margin-left:150px;}
+    #saletbl1 {margin-right:0; text-align:center; margin-left:150px;}
       #insertInven {margin-left:200px;}
    #costcode {color: #669;}
    td {border-bottom:1px solid  #ccc;}
    #tbl1 th {color: #039;padding: 10px 8px;border-bottom: 2px solid #6678b1;}
-   .btnclose, .btnclose1 {float:right;}
    </style>
    <link rel="stylesheet" href="../resources/icono.css">
 </head>
@@ -904,6 +903,10 @@ String day = cal.get(GregorianCalendar.DAY_OF_MONTH)+"";
                   console.log(amount);
                }
             }
+            var strsum=parseInt(amount+balance);
+            var strminus=parseInt(balance-amount);
+            var sum=strsum.toLocaleString();
+            var minus=strminus.toLocaleString();
             if(type=='입금'){
                 uncomma($(this).parent().parent().find(".sum").val(sum));
 //                 $(this).parent().parent("tr").next().find(".balance").find("input").val(sum);
@@ -915,10 +918,6 @@ String day = cal.get(GregorianCalendar.DAY_OF_MONTH)+"";
 //                 $(this).parent().parent("tr").next().find(".balance").find("input").val(minus);
                 uncomma($(this).parent().parent("tr").next().find(".sum").val(minus));
              }
-            var strsum=parseInt(amount+balance);
-            var strminus=parseInt(balance-amount);
-            var sum=strsum.toLocaleString();
-            var minus=strminus.toLocaleString();
             $(this).parent().parent().find(".sum").val(sum);
             $("#deposittbl1").find("input[name='"+attcode+"']").change(function(){
                if(this.value=='입금') {
@@ -1111,14 +1110,13 @@ String day = cal.get(GregorianCalendar.DAY_OF_MONTH)+"";
 		//재고 저장시
 		$(invenfrm).submit(function(e){
 			e.preventDefault();
-// 			var day=$("#date").val();
+			var day=$("#date").val();
 			$("#insertInven tr").each(function(){
 				var code=$(this).find("td").attr("code");
 				var start=$(this).find(".inven").html();
 				var input=$(this).find(".tdInvenIn").find("input").val();
 				var output=$(this).find(".tdInvenOut").find("input").val();
 				var end=$(this).find(".tdEndInven").find("input").val();
-				var day = "19/12/02";
 				if(input!=""&&output!=""){
 					$.ajax({
 						type:"post",

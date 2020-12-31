@@ -370,7 +370,7 @@ $("#adminId").keyup(function() {
       }
    });
    
-   //주소
+   //주소 API
    $("#FindCode").on('click', function() {
       new daum.Postcode({
          oncomplete : function(data) {

@@ -188,7 +188,7 @@ public class LoginController {
 //        return array;
 //     }
    
- //�궗�뾽�옄 踰덊샇 ��由щ뒆
+ //사업자 번호 셀레니움
    @RequestMapping("company.json")
   @ResponseBody
   public HashMap<String, String> companyJson(String companyCode, AdminVO vo, HttpSession session,HttpServletResponse response) throws Exception {
@@ -215,9 +215,6 @@ public class LoginController {
      array.put("companyCode", result.getText());
      System.out.println(result.getText());
      
-//      session.setAttribute("companyCode", vo.getCompanyCode());//�꽭�뀡���옣
-     
-//     driver.quit();
      return array;
   }
    
